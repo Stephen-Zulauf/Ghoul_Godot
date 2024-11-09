@@ -16,5 +16,11 @@ func update(delta):
 	PLAYER.update_input(SPEED,ACCELERATION,DECELERATION)
 	PLAYER.update_velocity()
 	
+	if Input.is_action_just_pressed("crouch") and PLAYER.is_on_floor():
+		transition.emit("CrouchingState")
+	
 	if PLAYER.velocity.length() > 0.0 and PLAYER.is_on_floor():
 		transition.emit("WalkingState")
+	
+	if Input.is_action_just_pressed("jump") and PLAYER.is_on_floor():
+		transition.emit("JumpingState")

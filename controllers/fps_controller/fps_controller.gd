@@ -9,6 +9,7 @@ extends CharacterBody3D
 
 #animation
 @export var ANIMATIONPLAYER: AnimationPlayer
+@export var CROUCH_SHAPECAST: ShapeCast3D
 
 var _mouse_input: bool = false
 var _mouse_rotation: Vector3
@@ -53,6 +54,8 @@ func _ready():
 	#GStates.player = self
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	CROUCH_SHAPECAST.add_exception($".")
 
 func _physics_process(delta: float) -> void:
 	

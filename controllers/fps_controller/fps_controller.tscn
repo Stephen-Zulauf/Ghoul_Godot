@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=18 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps_controller/fps_controller.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/fps_controller/UI/debug_theme.tres" id="2_tcvjx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://controllers/fps_controller/idle_state.gd" id="5_tj14c"]
 [ext_resource type="Script" path="res://controllers/fps_controller/walking_state.gd" id="6_g1vmr"]
 [ext_resource type="Script" path="res://controllers/fps_controller/sprinting_state.gd" id="7_rpwli"]
+[ext_resource type="Script" path="res://controllers/fps_controller/crouching_state.gd" id="8_wpuks"]
+[ext_resource type="Script" path="res://controllers/fps_controller/jumping_state.gd" id="9_joewa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl1s7"]
 
@@ -79,6 +81,42 @@ tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollisionShape3D:shape:height")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CollisionShape3D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera_controller:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.66462, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ncfoy"]
@@ -157,17 +195,60 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.966667, 1.5, 2)
 }
 
+[sub_resource type="Animation" id="Animation_qdta8"]
+resource_name = "crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera_controller:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.66462, 0), Vector3(0, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3yn8p"]
 _data = {
 "RESET": SubResource("Animation_4rqgj"),
+"crouch": SubResource("Animation_qdta8"),
 "sprinting": SubResource("Animation_ncfoy"),
 "walking": SubResource("Animation_xo22n")
 }
 
-[node name="fps_controller" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "ANIMATIONPLAYER")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_h7l18"]
+
+[node name="fps_controller" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "ANIMATIONPLAYER", "CROUCH_SHAPECAST")]
 script = ExtResource("1_khnba")
 CAMERA_CONTROLLER = NodePath("Camera_controller")
 ANIMATIONPLAYER = NodePath("AnimationPlayer")
+CROUCH_SHAPECAST = NodePath("ShapeCast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -217,7 +298,18 @@ script = ExtResource("5_tj14c")
 script = ExtResource("6_g1vmr")
 SPEED = 4.0
 
+[node name="CrouchingState" type="Node" parent="fpsStateMachine"]
+script = ExtResource("8_wpuks")
+
+[node name="JumpingState" type="Node" parent="fpsStateMachine"]
+script = ExtResource("9_joewa")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3yn8p")
 }
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_h7l18")
+target_position = Vector3(0, 0.5, 0)
