@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Ghoul"
-run/main_scene="res://levels/Test_level.tscn"
+run/main_scene="res://environment/levels/Test_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Debug="*res://g_scripts/debug.gd"
+Debug="*res://Global/debug.gd"
 
 [display]
 
