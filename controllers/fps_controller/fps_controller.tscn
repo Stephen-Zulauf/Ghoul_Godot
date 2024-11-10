@@ -1,16 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=29 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps_controller/fps_controller.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/fps_controller/UI/debug_theme.tres" id="2_tcvjx"]
 [ext_resource type="PackedScene" uid="uid://cus63f2yed3ou" path="res://weapons/weapon.tscn" id="2_tkaur"]
 [ext_resource type="Script" path="res://controllers/fps_controller/UI/debug.gd" id="3_jbj6k"]
-[ext_resource type="Script" path="res://g_scripts/state_machine.gd" id="4_cxw51"]
-[ext_resource type="Script" path="res://controllers/fps_controller/idle_state.gd" id="5_tj14c"]
-[ext_resource type="Script" path="res://controllers/fps_controller/walking_state.gd" id="6_g1vmr"]
-[ext_resource type="Script" path="res://controllers/fps_controller/sprinting_state.gd" id="7_rpwli"]
-[ext_resource type="Script" path="res://controllers/fps_controller/crouching_state.gd" id="8_wpuks"]
-[ext_resource type="Script" path="res://controllers/fps_controller/jumping_state.gd" id="9_joewa"]
-[ext_resource type="Script" path="res://controllers/fps_controller/falling_state.gd" id="10_frovj"]
+[ext_resource type="Script" path="res://g_scripts/state_bus.gd" id="5_61n3a"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_idle.gd" id="5_tj14c"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_walk.gd" id="6_g1vmr"]
+[ext_resource type="Script" path="res://controllers/fps_controller/states_movement.gd" id="6_mas8n"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_sprint.gd" id="7_rpwli"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_crouch.gd" id="8_wpuks"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_jump.gd" id="9_joewa"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_fall.gd" id="10_frovj"]
+[ext_resource type="Script" path="res://controllers/fps_controller/states_weapon.gd" id="12_ue8u1"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_test.gd" id="14_lbnlq"]
+[ext_resource type="Script" path="res://controllers/fps_controller/states_inventory.gd" id="14_ry2k1"]
+[ext_resource type="Script" path="res://controllers/fps_controller/states_ui.gd" id="15_w37hn"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_inv_test.gd" id="16_qs3bb"]
+[ext_resource type="Script" path="res://controllers/fps_controller/state_ui_test.gd" id="18_ukwif"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl1s7"]
 
@@ -329,8 +336,8 @@ _data = {
 [node name="fps_controller" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "ANIMATIONPLAYER", "CROUCH_SHAPECAST")]
 script = ExtResource("1_khnba")
 CAMERA_CONTROLLER = NodePath("Camera_controller")
-ANIMATIONPLAYER = NodePath("AnimationPlayer")
-CROUCH_SHAPECAST = NodePath("ShapeCast3D")
+ANIMATIONPLAYER = NodePath("Animations")
+CROUCH_SHAPECAST = NodePath("crouchHitbox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -345,6 +352,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
 [node name="WeaponRig" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
+transform = Transform3D(-0.00353867, -0.101332, 0.489611, -0.499695, 0.0174497, -8.74228e-08, -0.0170872, -0.489313, -0.101394, -0.535, -0.885, -0.73)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -368,36 +376,77 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/debugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-script = ExtResource("4_cxw51")
-CURRENT_STATE = NodePath("IdleState")
-
-[node name="SprintingState" type="Node" parent="StateMachine"]
-script = ExtResource("7_rpwli")
-SPEED = 6.0
-
-[node name="IdleState" type="Node" parent="StateMachine"]
-script = ExtResource("5_tj14c")
-
-[node name="WalkingState" type="Node" parent="StateMachine"]
-script = ExtResource("6_g1vmr")
-SPEED = 4.0
-
-[node name="CrouchingState" type="Node" parent="StateMachine"]
-script = ExtResource("8_wpuks")
-
-[node name="JumpingState" type="Node" parent="StateMachine"]
-script = ExtResource("9_joewa")
-
-[node name="FallingState" type="Node" parent="StateMachine"]
-script = ExtResource("10_frovj")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3yn8p")
 }
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+[node name="crouchHitbox" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("SphereShape3D_h7l18")
 target_position = Vector3(0, 0.5, 0)
+
+[node name="State_Bus" type="Node" parent="."]
+script = ExtResource("5_61n3a")
+
+[node name="States_Movement" type="Node" parent="State_Bus" node_paths=PackedStringArray("CURRENT_STATE", "BUS")]
+script = ExtResource("6_mas8n")
+CURRENT_STATE = NodePath("stateIdle")
+BUS = NodePath("..")
+
+[node name="stateSprint" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("7_rpwli")
+SPEED = 6.0
+ANIMATION = NodePath("../../../Animations")
+CONTROLLER = NodePath("../../..")
+
+[node name="stateIdle" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("5_tj14c")
+ANIMATION = NodePath("../../../Animations")
+CONTROLLER = NodePath("../../..")
+
+[node name="stateWalk" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("6_g1vmr")
+SPEED = 4.0
+ANIMATION = NodePath("../../../Animations")
+CONTROLLER = NodePath("../../..")
+
+[node name="stateCrouch" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER", "CROUCH_SHAPECAST")]
+script = ExtResource("8_wpuks")
+ANIMATION = NodePath("../../../Animations")
+CONTROLLER = NodePath("../../..")
+CROUCH_SHAPECAST = NodePath("../../../crouchHitbox")
+
+[node name="stateJump" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("9_joewa")
+ANIMATION = NodePath("../../../Animations")
+CONTROLLER = NodePath("../../..")
+
+[node name="stateFall" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("10_frovj")
+ANIMATION = NodePath("../../../Animations")
+CONTROLLER = NodePath("../../..")
+
+[node name="States_weapon" type="Node" parent="State_Bus" node_paths=PackedStringArray("CURRENT_STATE", "BUS")]
+script = ExtResource("12_ue8u1")
+CURRENT_STATE = NodePath("stateWeaponTest")
+BUS = NodePath("..")
+
+[node name="stateWeaponTest" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("14_lbnlq")
+
+[node name="States_inventory" type="Node" parent="State_Bus" node_paths=PackedStringArray("CURRENT_STATE", "BUS")]
+script = ExtResource("14_ry2k1")
+CURRENT_STATE = NodePath("stateInvTest")
+BUS = NodePath("..")
+
+[node name="stateInvTest" type="Node" parent="State_Bus/States_inventory"]
+script = ExtResource("16_qs3bb")
+
+[node name="States_UI" type="Node" parent="State_Bus" node_paths=PackedStringArray("CURRENT_STATE", "BUS")]
+script = ExtResource("15_w37hn")
+CURRENT_STATE = NodePath("stateUITest")
+BUS = NodePath("..")
+
+[node name="stateUITest" type="Node" parent="State_Bus/States_UI"]
+script = ExtResource("18_ukwif")

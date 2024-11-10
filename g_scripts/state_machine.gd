@@ -1,8 +1,7 @@
-class_name StateMachine
-
-extends Node
+class_name StateMachine extends Node
 
 @export var CURRENT_STATE: State
+@export var BUS: StateBus
 var states: Dictionary = {}
 
 func _ready():
@@ -21,7 +20,7 @@ func _ready():
 	
 func _process(delta):
 	CURRENT_STATE.update(delta)
-	Debug.fpsControllerDebugPanel.add_property("Current State", CURRENT_STATE.name, 1)
+	#Debug.fpsControllerDebugPanel.add_property("Current State", CURRENT_STATE.name, 1)
 	
 func _physics_process(delta):
 	CURRENT_STATE.physics_update(delta)

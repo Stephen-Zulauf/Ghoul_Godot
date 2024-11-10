@@ -1,4 +1,4 @@
-class_name Player 
+class_name Controller
 extends CharacterBody3D
 
 #mouse camera movement variables

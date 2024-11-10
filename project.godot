@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Debug="*res://g_scripts/debug.gd"
-GStates="*res://g_scripts/g_states.gd"
 
 [display]
 
