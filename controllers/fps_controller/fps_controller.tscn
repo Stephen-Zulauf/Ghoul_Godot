@@ -344,10 +344,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
-[node name="WeaponRig" type="Node3D" parent="Camera_controller/Camera3D"]
-
-[node name="Weapon" parent="Camera_controller/Camera3D/WeaponRig" instance=ExtResource("2_tkaur")]
-transform = Transform3D(0.00605385, 0.173362, 0.468945, -0.499695, 0.0174497, -8.74228e-08, -0.016366, -0.468659, 0.173468, 0.67, -0.84, -0.9)
+[node name="WeaponRig" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -371,28 +368,28 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/debugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="fpsStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("4_cxw51")
 CURRENT_STATE = NodePath("IdleState")
 
-[node name="SprintingState" type="Node" parent="fpsStateMachine"]
+[node name="SprintingState" type="Node" parent="StateMachine"]
 script = ExtResource("7_rpwli")
 SPEED = 6.0
 
-[node name="IdleState" type="Node" parent="fpsStateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("5_tj14c")
 
-[node name="WalkingState" type="Node" parent="fpsStateMachine"]
+[node name="WalkingState" type="Node" parent="StateMachine"]
 script = ExtResource("6_g1vmr")
 SPEED = 4.0
 
-[node name="CrouchingState" type="Node" parent="fpsStateMachine"]
+[node name="CrouchingState" type="Node" parent="StateMachine"]
 script = ExtResource("8_wpuks")
 
-[node name="JumpingState" type="Node" parent="fpsStateMachine"]
+[node name="JumpingState" type="Node" parent="StateMachine"]
 script = ExtResource("9_joewa")
 
-[node name="FallingState" type="Node" parent="fpsStateMachine"]
+[node name="FallingState" type="Node" parent="StateMachine"]
 script = ExtResource("10_frovj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
