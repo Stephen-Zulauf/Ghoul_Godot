@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=22 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps_controller/fps_controller.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/fps_controller/UI/debug_theme.tres" id="2_tcvjx"]
+[ext_resource type="PackedScene" uid="uid://cus63f2yed3ou" path="res://weapons/weapon.tscn" id="2_tkaur"]
 [ext_resource type="Script" path="res://controllers/fps_controller/UI/debug.gd" id="3_jbj6k"]
 [ext_resource type="Script" path="res://g_scripts/state_machine.gd" id="4_cxw51"]
 [ext_resource type="Script" path="res://controllers/fps_controller/idle_state.gd" id="5_tj14c"]
@@ -9,6 +10,7 @@
 [ext_resource type="Script" path="res://controllers/fps_controller/sprinting_state.gd" id="7_rpwli"]
 [ext_resource type="Script" path="res://controllers/fps_controller/crouching_state.gd" id="8_wpuks"]
 [ext_resource type="Script" path="res://controllers/fps_controller/jumping_state.gd" id="9_joewa"]
+[ext_resource type="Script" path="res://controllers/fps_controller/falling_state.gd" id="10_frovj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl1s7"]
 
@@ -342,11 +344,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
+[node name="WeaponRig" type="Node3D" parent="Camera_controller/Camera3D"]
+
+[node name="Weapon" parent="Camera_controller/Camera3D/WeaponRig" instance=ExtResource("2_tkaur")]
+transform = Transform3D(0.00605385, 0.173362, 0.468945, -0.499695, 0.0174497, -8.74228e-08, -0.016366, -0.468659, 0.173468, 0.67, -0.84, -0.9)
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -1.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 39.0
 
 [node name="debugPanel" type="PanelContainer" parent="UI"]
 layout_mode = 0
@@ -383,6 +391,9 @@ script = ExtResource("8_wpuks")
 
 [node name="JumpingState" type="Node" parent="fpsStateMachine"]
 script = ExtResource("9_joewa")
+
+[node name="FallingState" type="Node" parent="fpsStateMachine"]
+script = ExtResource("10_frovj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

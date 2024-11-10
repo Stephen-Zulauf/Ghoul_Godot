@@ -1,7 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://coktmac47j42j"]
+[gd_scene load_steps=8 format=3 uid="uid://coktmac47j42j"]
 
 [ext_resource type="MeshLibrary" uid="uid://c726i5p1djspe" path="res://environment/glbs/dungeon_walls/walls.tres" id="1_8anqe"]
 [ext_resource type="PackedScene" uid="uid://1xqo5lfuq12t" path="res://controllers/fps_controller/fps_controller.tscn" id="2_2n05v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tlqt"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ibmw3"]
+sky_material = SubResource("ProceduralSkyMaterial_3tlqt")
+
+[sub_resource type="Environment" id="Environment_2lsu1"]
+background_mode = 2
+sky = SubResource("Sky_ibmw3")
+ambient_light_color = Color(0.971444, 0.981278, 0.81441, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.02
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.971444, 0.981278, 0.81441, 1)
+fog_light_energy = 0.02
+fog_density = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_16mm5"]
 
@@ -9,6 +29,9 @@
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2lsu1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
@@ -31,3 +54,10 @@ data = {
 
 [node name="fps_controller" parent="." instance=ExtResource("2_2n05v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.064, 0, -0.138)
+MOUSE_SENSITIVITY = 1.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="fps_controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55854, 0.369322)
+light_color = Color(0.971444, 0.981278, 0.81441, 1)
+spot_range = 5.63855
+spot_angle = 47.8915

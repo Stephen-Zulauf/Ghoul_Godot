@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cus63f2yed3ou"]
+
+[ext_resource type="Script" path="res://weapons/init_weapon.gd" id="1_e1d84"]
+[ext_resource type="Resource" uid="uid://c27n7lgbrcnle" path="res://weapons/crowbar/crowbarR_res.tres" id="2_pbfdf"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_e1d84")
+WEAPON_TYPE = ExtResource("2_pbfdf")
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]
+
+[node name="WeaponShadow" type="MeshInstance3D" parent="."]
