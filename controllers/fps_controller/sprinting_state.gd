@@ -8,8 +8,10 @@ extends PlayerMovementState
 @export var TOP_ANIM_SPEED: float = 1.6
 
 func enter() -> void:
-	#PLAYER.ANIMATIONPLAYER.play("sprinting", 0.5, 1.0)
-	ANIMATION.play("sprinting", -1.0,1.0)
+	if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
+		await ANIMATION.animation_finished
+	else:
+		ANIMATION.play("sprinting", -1.0,1.0)
 
 func exit() -> void:
 	ANIMATION.speed_scale = 1.0

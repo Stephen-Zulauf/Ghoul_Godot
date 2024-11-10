@@ -8,8 +8,10 @@ extends PlayerMovementState
 @export var TOP_ANIMATION_SPEED: float = 2.2
 
 func enter() -> void:
-	pass
-	#ANIMATION.pause()
+	if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
+		await ANIMATION.animation_finished
+	else:
+		ANIMATION.pause()
 
 func update(delta):
 	PLAYER.update_gravity(delta)

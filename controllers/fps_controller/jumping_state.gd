@@ -9,12 +9,26 @@ extends PlayerMovementState
 
 func enter() -> void:
 	PLAYER.velocity.y += JUMP_VELOCITY
-	ANIMATION.pause()
+	ANIMATION.play("JumpStart")
 	
 func update(delta):
 	PLAYER.update_gravity(delta)
 	PLAYER.update_input(SPEED * INPUT_MULIPTLIER, ACCELERATION,DECELERATION)
 	PLAYER.update_velocity()
 	
+	if Input.is_action_just_released("jump"):
+		if PLAYER.velocity.y > 0:
+			PLAYER.velocity.y = PLAYER.velocity.y / 2.0
+	
 	if PLAYER.is_on_floor():
-		transition.emit("IdleState")
+		ANIMATION.play("JumpEnd")
+		if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
+			await ANIMATION.animation_finished
+		if Input.is_action_pressed("sprint"):
+			transition.emit("SprintingState")
+		elif Input.is_action_pressed("move_forward"):
+			transition.emit("WalkingState")
+		else:
+			transition.emit("IdleState")
+	
+		
