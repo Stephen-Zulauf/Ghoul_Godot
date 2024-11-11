@@ -6,7 +6,7 @@ class_name StateWeaponIdle extends State
 func enter() -> void:
 	pass
 
-func update(delta):
+func update(_delta):
 	
 	if get_parent().BUS.Crouching :
 		transition.emit("stateWeaponCrouch")

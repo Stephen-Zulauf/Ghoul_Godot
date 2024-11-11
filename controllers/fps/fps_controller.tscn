@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://controllers/fps/controller_fps.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/UI/debug_theme.tres" id="2_tcvjx"]
 [ext_resource type="PackedScene" uid="uid://cus63f2yed3ou" path="res://controllers/weapon/weapon.tscn" id="2_tkaur"]
-[ext_resource type="Script" path="res://controllers/interact/controller_interaction.gd" id="3_64ega"]
 [ext_resource type="Script" path="res://controllers/UI/debug.gd" id="3_jbj6k"]
+[ext_resource type="PackedScene" uid="uid://ccx3ybctaty83" path="res://controllers/interact/controller_interaction.tscn" id="3_vmhoc"]
 [ext_resource type="Script" path="res://Global/state_bus.gd" id="5_61n3a"]
 [ext_resource type="Script" path="res://controllers/fps/state_idle.gd" id="5_tj14c"]
 [ext_resource type="Script" path="res://controllers/fps/state_walk.gd" id="6_g1vmr"]
@@ -363,6 +363,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
 [node name="ControllerWeapon" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
+transform = Transform3D(-0.00353867, -0.101332, 0.489611, -0.499695, 0.0174497, -8.74228e-08, -0.0170872, -0.489313, -0.101394, -0.535, -0.885, -0.73)
 
 [node name="Cast_weapon" type="RayCast3D" parent="Camera_controller/Camera3D"]
 visible = false
@@ -370,13 +371,8 @@ visible = false
 [node name="Cast_Pickable" type="RayCast3D" parent="Camera_controller/Camera3D"]
 target_position = Vector3(0, 0, -3)
 
-[node name="Mark_Hand" type="Marker3D" parent="Camera_controller/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.61433)
-
-[node name="Interaction" type="Node3D" parent="." node_paths=PackedStringArray("RAY", "HAND")]
-script = ExtResource("3_64ega")
-RAY = NodePath("../Camera_controller/Camera3D/Cast_Pickable")
-HAND = NodePath("../Camera_controller/Camera3D/Mark_Hand")
+[node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("RAY") instance=ExtResource("3_vmhoc")]
+RAY = NodePath("../Cast_Pickable")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

@@ -10,7 +10,7 @@ func enter() -> void:
 	#else:
 		#ANIMATION.pause()
 
-func update(delta):
+func update(_delta):
 	#CONTROLLER.update_gravity(delta)
 	#CONTROLLER.update_input(SPEED,ACCELERATION,DECELERATION)
 	#CONTROLLER.update_velocity()

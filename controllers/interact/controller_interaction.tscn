@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccx3ybctaty83"]
+
+[ext_resource type="Script" path="res://controllers/interact/controller_interaction.gd" id="1_t705x"]
+
+[node name="ControllerInteraction" type="Node3D" node_paths=PackedStringArray("HAND", "HAND_BODY", "JOINT")]
+script = ExtResource("1_t705x")
+HAND = NodePath("Marker3D")
+HAND_BODY = NodePath("staticHand")
+JOINT = NodePath("Generic6DOFJoint3D")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
+node_a = NodePath("../staticHand")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+
+[node name="staticHand" type="StaticBody3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="."]

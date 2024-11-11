@@ -41,7 +41,7 @@ func _ready() -> void:
 			matchBool(child.CURRENT_STATE.name)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	clear_bools()
 	for child in get_children():
 		if child is StateMachine:

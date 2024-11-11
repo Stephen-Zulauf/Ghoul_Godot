@@ -6,7 +6,7 @@ class_name StateWeaponJump extends State
 func enter() -> void:
 	pass
 
-func update(delta):
+func update(_delta):
 	if !get_parent().BUS.Jumping:
 		if get_parent().BUS.Sprinting :
 			transition.emit("stateWeaponSprint")
