@@ -3,13 +3,8 @@ class_name StateWeaponSprint extends State
 @export var WEAPON : ControllerWeapon
 @export var ANIMATION : AnimationPlayer
 
-@export var SPEED: float = 5.0
-@export var ACCELERATION: float = 0.1
-@export var DECELERATION: float = 0.25
-@export var TOP_ANIMATION_SPEED: float = 2.2
-
 func enter() -> void:
-	print("weapon sprint")
+	pass
 	#if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
 		#await ANIMATION.animation_finished
 	#else:
@@ -34,6 +29,5 @@ func update(delta):
 	if get_parent().BUS.Falling:
 		transition.emit("stateWeaponFall")
 	
-#func set_animation_speed(spd) -> void:
-	#var alpha = remap(spd, 0.0, SPEED, 0.0, 1.0)
-	#ANIMATION.speed_scale = lerp(0.0, TOP_ANIM_SPEED, alpha)
+func _physics_process(delta: float) -> void:
+	WEAPON.update_sway(delta)

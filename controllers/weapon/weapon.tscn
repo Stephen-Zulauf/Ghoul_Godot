@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cus63f2yed3ou"]
 
 [ext_resource type="Script" path="res://controllers/weapon/controller_weapon.gd" id="1_e1d84"]
-[ext_resource type="Resource" uid="uid://cslrkrt3cygxn" path="res://resources/Weapons/crowbar/crowbarL_res.tres" id="2_6dumx"]
-[ext_resource type="ArrayMesh" uid="uid://d4anqtrdtcjdf" path="res://resources/Weapons/crowbar/crowbar.tres" id="3_ip1wu"]
+[ext_resource type="Resource" uid="uid://cslrkrt3cygxn" path="res://resources/weapons/crowbar/crowbarL_res.tres" id="2_6dumx"]
+[ext_resource type="ArrayMesh" uid="uid://d4anqtrdtcjdf" path="res://resources/weapons/crowbar/crowbar.tres" id="3_ip1wu"]
 
 [node name="WeaponRig" type="Node3D"]
 transform = Transform3D(-0.00353867, -0.101332, 0.489611, -0.499695, 0.0174497, -8.74228e-08, -0.0170872, -0.489313, -0.101394, -0.535, -0.885, -0.73)

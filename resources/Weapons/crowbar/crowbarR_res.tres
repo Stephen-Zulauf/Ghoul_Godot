@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Weapons" load_steps=3 format=3 uid="uid://c27n7lgbrcnle"]
 
-[ext_resource type="ArrayMesh" uid="uid://d4anqtrdtcjdf" path="res://resources/Weapons/crowbar/crowbar.tres" id="1_ictf5"]
-[ext_resource type="Script" path="res://resources/resource_weapon.gd" id="2_luyme"]
+[ext_resource type="ArrayMesh" uid="uid://d4anqtrdtcjdf" path="res://resources/weapons/crowbar/crowbar.tres" id="1_ictf5"]
+[ext_resource type="Script" path="res://resources/weapons/resource_weapon.gd" id="2_luyme"]
 
 [resource]
 script = ExtResource("2_luyme")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://coktmac47j42j"]
+[gd_scene load_steps=9 format=3 uid="uid://coktmac47j42j"]
 
 [ext_resource type="MeshLibrary" uid="uid://c726i5p1djspe" path="res://environment/blender/exported_glbs/walls_dungeon/walls.tres" id="1_rij2p"]
 [ext_resource type="PackedScene" uid="uid://1xqo5lfuq12t" path="res://controllers/fps/fps_controller.tscn" id="2_mi61b"]
+[ext_resource type="PackedScene" uid="uid://da3d651akb8ir" path="res://resources/pickables/Chicken/chicken.tscn" id="3_m38t8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tlqt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -61,3 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55854, 0.369322)
 light_color = Color(0.971444, 0.981278, 0.81441, 1)
 spot_range = 5.63855
 spot_angle = 47.8915
+
+[node name="Chicken" parent="." instance=ExtResource("3_m38t8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29036, 0, -21.5675)

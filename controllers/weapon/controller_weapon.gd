@@ -65,6 +65,8 @@ func update_sway(delta) -> void:
 	#lerp rotation
 	rotation_degrees.y = lerp(rotation_degrees.y, WEAPON_TYPE.rotation.y + (mouse_movement.x * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
 	rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x + (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
+func update_idle(delta) -> void:
+	pass
 
 func _physics_process(delta: float) -> void:
 	pass

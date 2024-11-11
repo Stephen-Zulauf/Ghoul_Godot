@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwqf6pekfd8sp"
-path.s3tc="res://.godot/imported/crowbar_v2_0.png-dd09d22b78f00e5855c5f1f54c7982db.s3tc.ctex"
+uid="uid://dk3of4e5lul5l"
+path.s3tc="res://.godot/imported/chicken_Image_0.png-0448a369bef0a35f13b2033cfa56c157.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "536d455506e6d1bae8394ae3d3646353"
+"md5": "18bb2d98aed27c17624ce8df6399791a"
 }
 
 [deps]
 
-source_file="res://resources/weapons/crowbar/crowbar_v2_0.png"
-dest_files=["res://.godot/imported/crowbar_v2_0.png-dd09d22b78f00e5855c5f1f54c7982db.s3tc.ctex"]
+source_file="res://resources/pickables/Chicken/chicken_Image_0.png"
+dest_files=["res://.godot/imported/chicken_Image_0.png-0448a369bef0a35f13b2033cfa56c157.s3tc.ctex"]
 
 [params]
 

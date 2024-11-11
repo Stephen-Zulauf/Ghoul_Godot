@@ -17,8 +17,8 @@ func clear_bools() -> void:
 	Jumping = false
 	Falling = false
 	
-func matchBool(name : String) -> void:
-	match name:
+func matchBool(sname : String) -> void:
+	match sname:
 		"stateIdle":
 			Idle = true
 		"stateSprint":
