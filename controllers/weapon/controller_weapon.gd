@@ -40,6 +40,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_movement = event.relative
 
+#TODO update_hand_weapon
 func load_weapon() -> void:
 	weapon_mesh.mesh = WEAPON_TYPE.mesh #set weapon mesh
 	position = WEAPON_TYPE.position #set weapon postion
@@ -53,7 +54,7 @@ func load_weapon() -> void:
 	idle_sway_rotation_strength = WEAPON_TYPE.idle_sway_rotation
 	random_sway_amount = WEAPON_TYPE.random_sway_amount
 	
-func sway_weapon(delta) -> void:
+func update_sway(delta) -> void:
 	#clamp
 	mouse_movement = mouse_movement.clamp(WEAPON_TYPE.sway_min, WEAPON_TYPE.sway_max)
 	#lerp postions based on mouse
@@ -66,5 +67,5 @@ func sway_weapon(delta) -> void:
 	rotation_degrees.x = lerp(rotation_degrees.x, WEAPON_TYPE.rotation.x + (mouse_movement.y * WEAPON_TYPE.sway_amount_rotation) * delta, WEAPON_TYPE.sway_speed_rotation)
 
 func _physics_process(delta: float) -> void:
-	#pass
-	sway_weapon(delta)
+	pass
+	#update_sway(delta)

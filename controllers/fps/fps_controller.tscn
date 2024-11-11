@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=35 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps/controller_fps.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/UI/debug_theme.tres" id="2_tcvjx"]
@@ -15,9 +15,15 @@
 [ext_resource type="Script" path="res://controllers/fps/states_weapon.gd" id="12_ue8u1"]
 [ext_resource type="Script" path="res://controllers/weapon/state_wea_test.gd" id="14_lbnlq"]
 [ext_resource type="Script" path="res://controllers/fps/states_inventory.gd" id="14_ry2k1"]
+[ext_resource type="Script" path="res://controllers/weapon/state_weapon_idle.gd" id="15_dvlsh"]
 [ext_resource type="Script" path="res://controllers/fps/states_ui.gd" id="15_w37hn"]
+[ext_resource type="Script" path="res://controllers/weapon/state_weapon_sprint.gd" id="16_lcgvb"]
 [ext_resource type="Script" path="res://controllers/fps/state_inv_test.gd" id="16_qs3bb"]
+[ext_resource type="Script" path="res://controllers/weapon/state_weapon_walk.gd" id="17_j1sy6"]
+[ext_resource type="Script" path="res://controllers/weapon/state_weapon_crouch.gd" id="18_orsrb"]
 [ext_resource type="Script" path="res://controllers/fps/state_ui_test.gd" id="18_ukwif"]
+[ext_resource type="Script" path="res://controllers/weapon/state_weapon_jump.gd" id="19_kd81j"]
+[ext_resource type="Script" path="res://controllers/weapon/state_weapon_fall.gd" id="20_bccu0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl1s7"]
 
@@ -352,7 +358,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
 [node name="ControllerWeapon" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
-transform = Transform3D(0.00605385, 0.173362, 0.468945, -0.499695, 0.0174497, -8.74228e-08, -0.016366, -0.468659, 0.173468, 0.62, -0.885, -0.73)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -401,14 +406,14 @@ script = ExtResource("6_mas8n")
 CURRENT_STATE = NodePath("stateIdle")
 BUS = NodePath("..")
 
-[node name="stateSprint" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
-script = ExtResource("7_rpwli")
-SPEED = 6.0
+[node name="stateIdle" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("5_tj14c")
 ANIMATION = NodePath("../../../Animation_movement")
 CONTROLLER = NodePath("../../..")
 
-[node name="stateIdle" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
-script = ExtResource("5_tj14c")
+[node name="stateSprint" type="Node" parent="State_Bus/States_Movement" node_paths=PackedStringArray("ANIMATION", "CONTROLLER")]
+script = ExtResource("7_rpwli")
+SPEED = 6.0
 ANIMATION = NodePath("../../../Animation_movement")
 CONTROLLER = NodePath("../../..")
 
@@ -436,11 +441,29 @@ CONTROLLER = NodePath("../../..")
 
 [node name="States_weapon" type="Node" parent="State_Bus" node_paths=PackedStringArray("CURRENT_STATE", "BUS")]
 script = ExtResource("12_ue8u1")
-CURRENT_STATE = NodePath("stateWeaponTest")
+CURRENT_STATE = NodePath("stateWeaponIdle")
 BUS = NodePath("..")
 
 [node name="stateWeaponTest" type="Node" parent="State_Bus/States_weapon"]
 script = ExtResource("14_lbnlq")
+
+[node name="stateWeaponIdle" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("15_dvlsh")
+
+[node name="stateWeaponSprint" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("16_lcgvb")
+
+[node name="stateWeaponWalk" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("17_j1sy6")
+
+[node name="stateWeaponCrouch" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("18_orsrb")
+
+[node name="stateWeaponJump" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("19_kd81j")
+
+[node name="stateWeaponFall" type="Node" parent="State_Bus/States_weapon"]
+script = ExtResource("20_bccu0")
 
 [node name="States_inventory" type="Node" parent="State_Bus" node_paths=PackedStringArray("CURRENT_STATE", "BUS")]
 script = ExtResource("14_ry2k1")
