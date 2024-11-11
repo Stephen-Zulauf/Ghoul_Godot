@@ -19,13 +19,14 @@ func _ready() -> void:
 	HAND_BODY.global_position.z -= HAND_LENGTH
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#if picked_object != null:
 		#HAND_BODY.translate(RAY.get_collision_point())
+	Debug.fpsControllerDebugPanel.add_property(RAY.name, RAY.get_collider(), 1)
 	if Input.is_action_just_pressed("interact"):
 		pick_object()
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	pass
 
 func pick_object():
@@ -33,8 +34,9 @@ func pick_object():
 	if collider != null and collider is Pickable:
 		picked_object = collider
 		
+		
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("interact") and picked_object != null:
 		JOINT.set_node_b(picked_object.get_path())
 		var a = picked_object.global_transform.origin

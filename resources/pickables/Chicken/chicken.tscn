@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://da3d651akb8ir"]
 
-[ext_resource type="Script" path="res://resources/pickables/pickable.gd" id="1_rt8j2"]
+[ext_resource type="Script" path="res://resources/pickables/Chicken/chicken.gd" id="1_qowjg"]
 [ext_resource type="PackedScene" uid="uid://bcbg7p3ht86b6" path="res://resources/pickables/Chicken/chicken.glb" id="2_r3w0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yuop"]
 size = Vector3(1.055, 1.3, 0.7)
 
 [node name="Chicken" type="RigidBody3D"]
-script = ExtResource("1_rt8j2")
+script = ExtResource("1_qowjg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.002, 0.571225, 0)

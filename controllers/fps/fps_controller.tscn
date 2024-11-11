@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=36 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps/controller_fps.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/UI/debug_theme.tres" id="2_tcvjx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Global/state_bus.gd" id="5_61n3a"]
 [ext_resource type="Script" path="res://controllers/fps/state_idle.gd" id="5_tj14c"]
 [ext_resource type="Script" path="res://controllers/fps/state_walk.gd" id="6_g1vmr"]
+[ext_resource type="Texture2D" uid="uid://bid5xdtv28s7n" path="res://resources/pickables/Chicken/Chicken1.TGA.png" id="6_k3660"]
 [ext_resource type="Script" path="res://controllers/fps/states_movement.gd" id="6_mas8n"]
 [ext_resource type="Script" path="res://controllers/fps/state_sprint.gd" id="7_rpwli"]
 [ext_resource type="Script" path="res://controllers/fps/state_crouch.gd" id="8_wpuks"]
@@ -380,21 +381,100 @@ anchors_preset = 0
 offset_top = -1.0
 offset_right = 16.0
 offset_bottom = 13.0
+mouse_filter = 1
 
-[node name="debugPanel" type="PanelContainer" parent="UI"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 36.0
-offset_bottom = 34.0
+[node name="Debug" type="CanvasLayer" parent="UI"]
+
+[node name="debugPanel" type="PanelContainer" parent="UI/Debug"]
+offset_right = 29.0
+offset_bottom = 24.0
+mouse_filter = 1
 theme = ExtResource("2_tcvjx")
 script = ExtResource("3_jbj6k")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/debugPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Debug/debugPanel"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/debugPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Debug/debugPanel/MarginContainer"]
 layout_mode = 2
+
+[node name="Inventory" type="CanvasLayer" parent="UI"]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Inventory"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Inventory/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Item0" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_k3660")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer5" type="MarginContainer" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Item0" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_k3660")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer6" type="MarginContainer" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Item0" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_k3660")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer7" type="MarginContainer" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Item0" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_k3660")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Animation_movement" type="AnimationPlayer" parent="."]
 libraries = {

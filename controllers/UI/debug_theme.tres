@@ -3,6 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://chy8pndxuv2h0" path="res://controllers/UI/new_style_box_flat_theme.tres" id="1_o53qi"]
 
 [resource]
+Label/font_sizes/font_size = 15
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

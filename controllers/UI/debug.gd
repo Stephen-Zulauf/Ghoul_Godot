@@ -11,6 +11,7 @@ func _ready():
 	
 	visible = false
 	
+	
 #	add_debug_property("FPS", frames_per_second)
 
 func _process(delta):
