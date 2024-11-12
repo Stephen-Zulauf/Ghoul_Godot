@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://da3d651akb8ir"]
+[gd_scene load_steps=5 format=3 uid="uid://da3d651akb8ir"]
 
 [ext_resource type="Script" path="res://resources/pickables/Chicken/chicken.gd" id="1_qowjg"]
 [ext_resource type="PackedScene" uid="uid://bcbg7p3ht86b6" path="res://resources/pickables/Chicken/chicken.glb" id="2_r3w0r"]
+[ext_resource type="Script" path="res://resources/interaction_component.gd" id="3_ynlt0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yuop"]
 size = Vector3(1.055, 1.3, 0.7)
@@ -15,3 +16,6 @@ shape = SubResource("BoxShape3D_7yuop")
 
 [node name="glb" parent="." instance=ExtResource("2_r3w0r")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("3_ynlt0")

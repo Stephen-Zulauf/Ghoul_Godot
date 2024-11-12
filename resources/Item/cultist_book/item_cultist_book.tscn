@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=4 uid="uid://pk3cy54nimi6"]
+
+[ext_resource type="Script" path="res://resources/Item/cultist_book/item_cultist_book.gd" id="1_0uxhe"]
+[ext_resource type="Texture2D" uid="uid://8mqx01qnef1q" path="res://resources/Item/cultist_book/cultist_book_0.png" id="2_3whcm"]
+[ext_resource type="Script" path="res://resources/interaction_component.gd" id="3_d57nl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c1b3y"]
+size = Vector3(0.757446, 0.224792, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7k55"]
+resource_name = "book_txt"
+cull_mode = 2
+albedo_texture = ExtResource("2_3whcm")
+roughness = 0.6
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jw8e4"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAEAAAADAAIAAwAEAAIAAwAFAAQABQAGAAQABQAHAAYABwABAAYABwAAAAEAAQAEAAYAAQACAAQABwADAAAABwAFAAMA"),
+"name": "book_txt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP7/AAD//wAA/v8AAP/////+/wAAAAD/////AAD/////AAAAAAAA//8AAAAA//8AAAAAAAAAAAAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tby0k"]
+resource_name = "Sketchfab_Scene_pCube2_book_txt_0"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("eCXESvyTxEr8k6t2eCWrdtY2m3eKgpt3ioIzy9Y2M8sASLHVWZyx1VmcqfcASKn3yYjvxsmItn+px7Z/qcfvxkPP2Igy/diIMv0PvUPPD71EAUGInzZBiJ82PblEAT25"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABAAHAAYACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFAAXABYA"),
+"material": SubResource("StandardMaterial3D_y7k55"),
+"name": "book_txt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP7//n///wAA/v/+f//////+//5/AAD//////n8AAP//////P//////+//8//////wAA/z8AAP//AAD/PwAA//8AAAAA/////wAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAqir//wAAAACqKv//AAD+/6oqAAAAAP7/qir//wAA/v//P///AAAAAP8//////wAA/z///////v//PwAAAAAAAP8/AAAAAP7//z8AAP//////PwAA//8AAP8//3////9/////f////3///////3////9/////f////3////9/////f////3////9/qipU1aoqVNWqKlTVqipU1f9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jw8e4")
+
+[node name="cultist_book" type="RigidBody3D"]
+script = ExtResource("1_0uxhe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00128174, 3.05176e-05, 0)
+shape = SubResource("BoxShape3D_c1b3y")
+
+[node name="pCube2" type="Node3D" parent="."]
+transform = Transform3D(0.76, 0, 0, 0, 0.22, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="pCube2_book_txt_0" type="MeshInstance3D" parent="pCube2"]
+mesh = SubResource("ArrayMesh_tby0k")
+skeleton = NodePath("")
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("3_d57nl")

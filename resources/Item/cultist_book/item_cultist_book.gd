@@ -1,4 +1,4 @@
-class_name objectChicken extends Pickable
+class_name CultBook extends Item
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

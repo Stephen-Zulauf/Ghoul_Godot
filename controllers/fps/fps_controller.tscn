@@ -372,8 +372,9 @@ visible = false
 [node name="Cast_Pickable" type="RayCast3D" parent="Camera_controller/Camera3D"]
 target_position = Vector3(0, 0, -3)
 
-[node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("RAY") instance=ExtResource("3_vmhoc")]
+[node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("RAY", "CAMERA") instance=ExtResource("3_vmhoc")]
 RAY = NodePath("../Cast_Pickable")
+CAMERA = NodePath("..")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
