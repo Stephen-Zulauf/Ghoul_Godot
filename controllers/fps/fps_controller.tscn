@@ -1,18 +1,21 @@
-[gd_scene load_steps=36 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=39 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps/controller_fps.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/UI/debug_theme.tres" id="2_tcvjx"]
 [ext_resource type="PackedScene" uid="uid://cus63f2yed3ou" path="res://controllers/weapon/weapon.tscn" id="2_tkaur"]
 [ext_resource type="Script" path="res://controllers/UI/debug.gd" id="3_jbj6k"]
 [ext_resource type="PackedScene" uid="uid://ccx3ybctaty83" path="res://controllers/interact/controller_interaction.tscn" id="3_vmhoc"]
+[ext_resource type="Script" path="res://controllers/UI/ui_controller.gd" id="4_e0e7y"]
 [ext_resource type="Script" path="res://Global/state_bus.gd" id="5_61n3a"]
 [ext_resource type="Script" path="res://controllers/fps/state_idle.gd" id="5_tj14c"]
 [ext_resource type="Script" path="res://controllers/fps/state_walk.gd" id="6_g1vmr"]
 [ext_resource type="Texture2D" uid="uid://bid5xdtv28s7n" path="res://resources/pickables/Chicken/Chicken1.TGA.png" id="6_k3660"]
 [ext_resource type="Script" path="res://controllers/fps/states_movement.gd" id="6_mas8n"]
+[ext_resource type="Script" path="res://controllers/UI/ui_interaction_controller.gd" id="7_4jwko"]
 [ext_resource type="Script" path="res://controllers/fps/state_sprint.gd" id="7_rpwli"]
 [ext_resource type="Script" path="res://controllers/fps/state_crouch.gd" id="8_wpuks"]
 [ext_resource type="Script" path="res://controllers/fps/state_jump.gd" id="9_joewa"]
+[ext_resource type="Texture2D" uid="uid://dv0ysk3cebq16" path="res://resources/global/crosshairs/Outline/crosshair179.png" id="10_6yi0w"]
 [ext_resource type="Script" path="res://controllers/fps/state_fall.gd" id="10_frovj"]
 [ext_resource type="Script" path="res://controllers/fps/states_weapon.gd" id="12_ue8u1"]
 [ext_resource type="Script" path="res://controllers/fps/states_inventory.gd" id="14_ry2k1"]
@@ -366,25 +369,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 [node name="ControllerWeapon" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
 transform = Transform3D(-0.00353867, -0.101332, 0.489611, -0.499695, 0.0174497, -8.74228e-08, -0.0170872, -0.489313, -0.101394, -0.535, -0.885, -0.73)
 
-[node name="Cast_weapon" type="RayCast3D" parent="Camera_controller/Camera3D"]
-visible = false
-
-[node name="Cast_Pickable" type="RayCast3D" parent="Camera_controller/Camera3D"]
-target_position = Vector3(0, 0, -3)
-
-[node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("RAY", "CAMERA") instance=ExtResource("3_vmhoc")]
-RAY = NodePath("../Cast_Pickable")
+[node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("CAMERA") instance=ExtResource("3_vmhoc")]
 CAMERA = NodePath("..")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_top = -1.0
-offset_right = 16.0
-offset_bottom = 13.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("4_e0e7y")
 
 [node name="Debug" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="debugPanel" type="PanelContainer" parent="UI/Debug"]
 offset_right = 29.0
@@ -475,6 +474,60 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("6_k3660")
 expand_mode = 2
+stretch_mode = 5
+
+[node name="Intraction" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("icon", "context")]
+script = ExtResource("7_4jwko")
+icon = NodePath("prompt/VBoxContainer/TextureRect")
+context = NodePath("prompt/VBoxContainer/Label")
+
+[node name="prompt" type="CenterContainer" parent="UI/Intraction"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = 13.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Intraction/prompt"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Intraction/prompt/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Intraction/prompt/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="recticle" type="CanvasLayer" parent="UI"]
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/recticle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="UI/recticle/BoxContainer"]
+modulate = Color(0.972549, 0.980392, 0.815686, 0.4)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("10_6yi0w")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Animation_movement" type="AnimationPlayer" parent="."]

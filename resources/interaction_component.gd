@@ -1,6 +1,9 @@
 class_name InteractionComponent extends Node
 
-#@export var OVERLAY : StandardMaterial3D
+@export var MESH : MeshInstance3D
+@export var context : String
+@export var override_icon : bool
+@export var new_icon : Texture2D
 
 var overlay = preload("res://resources/Item/item_overlay_material_3d.tres")
 var parent
@@ -15,22 +18,29 @@ func _process(_delta: float) -> void:
 	pass
 	
 func on_focus() -> void:
-	print("focused: " + parent.name)
-	for child in parent.get_children():
-		if child is MeshInstance3D:
-			child.material_overlay = overlay
+	#print("focused: " + parent.name)
+	if MESH:
+		MESH.material_overlay = overlay
+	UiController.Interaction.emit_signal("focused", new_icon, override_icon, context)
+	
 
 func on_unfocus() -> void:
-	print("un-focused: " + parent.name)
-	for child in parent.get_children():
-		if child is MeshInstance3D:
-			child.material_overlay = null
+	#print("un-focused: " + parent.name)
+	if MESH:
+		MESH.material_overlay = null
+	UiController.Interaction.emit_signal("unfocused")
 
 func on_interact() -> void:
-	print("picked: " + parent.name)
+	#print("picked: " + parent.name)
+	if MESH:
+		MESH.material_overlay = null
+	UiController.Interaction.emit_signal("unfocused")
+	UiController.Interaction.emit_signal("interacted")
 
 func on_uninteract() -> void:
-	print("dropped: " + parent.name)
+	pass
+	#print("dropped: " + parent.name)
+	#UiController.Interaction.emit_signal("focused", new_icon, override_icon, context)
 
 func connect_parent() -> void:
 	parent.add_user_signal("focused")

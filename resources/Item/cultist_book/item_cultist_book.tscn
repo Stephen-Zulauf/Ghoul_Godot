@@ -49,15 +49,18 @@ shadow_mesh = SubResource("ArrayMesh_jw8e4")
 script = ExtResource("1_0uxhe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00128174, 3.05176e-05, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.00128174, 3.05176e-05, 0)
 shape = SubResource("BoxShape3D_c1b3y")
 
 [node name="pCube2" type="Node3D" parent="."]
 transform = Transform3D(0.76, 0, 0, 0, 0.22, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="pCube2_book_txt_0" type="MeshInstance3D" parent="pCube2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_tby0k")
 skeleton = NodePath("")
 
-[node name="InteractionComponent" type="Node" parent="."]
+[node name="InteractionComponent" type="Node" parent="." node_paths=PackedStringArray("MESH")]
 script = ExtResource("3_d57nl")
+MESH = NodePath("../pCube2/pCube2_book_txt_0")
+context = "Cult Book"
