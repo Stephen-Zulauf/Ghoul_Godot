@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwqf6pekfd8sp"
-path.s3tc="res://.godot/imported/crowbar_v2_0.png-dd09d22b78f00e5855c5f1f54c7982db.s3tc.ctex"
+uid="uid://uehcclrsq2yb"
+path.s3tc="res://.godot/imported/retro__psx-like_horror_melee_weapons_pack_1.png-62100ef10ed13f66bb1a38fe1f6d4fad.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "536d455506e6d1bae8394ae3d3646353"
+"md5": "59308822a2f3719f84f849550d0f8174"
 }
 
 [deps]
 
-source_file="res://resources/weapons/crowbar/crowbar_v2_0.png"
-dest_files=["res://.godot/imported/crowbar_v2_0.png-dd09d22b78f00e5855c5f1f54c7982db.s3tc.ctex"]
+source_file="res://resources/global/retro__psx-like_horror_melee_weapons_pack_1.png"
+dest_files=["res://.godot/imported/retro__psx-like_horror_melee_weapons_pack_1.png-62100ef10ed13f66bb1a38fe1f6d4fad.s3tc.ctex"]
 
 [params]
 

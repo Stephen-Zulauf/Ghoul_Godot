@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bjw5nprioe3yd"]
+
+[ext_resource type="ArrayMesh" uid="uid://dv8cijmw0kdk6" path="res://resources/weapons/Crowbar2.0/crowbar_mesh.tres" id="1_74gxw"]
+[ext_resource type="Script" path="res://resources/Item.gd" id="1_mybw7"]
+[ext_resource type="PackedScene" uid="uid://cms26vvobj27t" path="res://resources/weapons/Crowbar2.0/crowbar_2_0.tscn" id="2_cmbp2"]
+
+[resource]
+script = ExtResource("1_mybw7")
+name = &"Crowbar"
+mesh = ExtResource("1_74gxw")
+arrayMesh = false
+scene = ExtResource("2_cmbp2")
+shadow = false
+pickable = true
+Inventory = false
+weapon = true
+value = 0
+base_damage = 0.0
+position = Vector3(0.62, -0.885, -0.73)
+rotation = Vector3(0, -290.3, -88)
+scale = Vector3(0.5, 0.5, 0.5)
+sway_min = Vector2(-20, -20)
+sway_max = Vector2(20, 20)
+sway_speed_position = 0.07
+sway_speed_rotation = 0.1
+sway_amount_position = 0.1
+sway_amount_rotation = 30.0
+idle_sway = 10.0
+idle_sway_rotation = 300.0
+random_sway_amount = 5.0

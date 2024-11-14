@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=4 uid="uid://pk3cy54nimi6"]
+[gd_scene load_steps=7 format=4 uid="uid://pk3cy54nimi6"]
 
-[ext_resource type="Script" path="res://resources/Item/cultist_book/item_cultist_book.gd" id="1_0uxhe"]
 [ext_resource type="Texture2D" uid="uid://8mqx01qnef1q" path="res://resources/Item/cultist_book/cultist_book_0.png" id="2_3whcm"]
 [ext_resource type="Script" path="res://resources/interaction_component.gd" id="3_d57nl"]
 
@@ -46,7 +45,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jw8e4")
 
 [node name="cultist_book" type="RigidBody3D"]
-script = ExtResource("1_0uxhe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.00128174, 3.05176e-05, 0)

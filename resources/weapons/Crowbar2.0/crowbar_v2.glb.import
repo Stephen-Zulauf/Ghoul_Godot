@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bmo2bie8k0net"
-valid=false
+uid="uid://bq3o1g6qeghvh"
+path="res://.godot/imported/crowbar_v2.glb-4fd4a84492bc65c86df81a042fecf3ab.scn"
 
 [deps]
 
-source_file="res://resources/weapons/crowbar/crowbar_v2.glb"
+source_file="res://resources/weapons/Crowbar2.0/crowbar_v2.glb"
+dest_files=["res://.godot/imported/crowbar_v2.glb-4fd4a84492bc65c86df81a042fecf3ab.scn"]
 
 [params]
 
@@ -30,18 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"meshes": {
-"Sketchfab_Scene_Crowbar_Crowbar_0": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
-"save_to_file/path": "res://weapons/crowbar/crowbar.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

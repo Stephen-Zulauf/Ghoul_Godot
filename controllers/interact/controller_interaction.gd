@@ -10,7 +10,7 @@ class_name ControllerInteraction extends Node3D
 @export var THROW_STRENGTH: float = 5
 @export var CAMERA : Camera3D
 
-var picked_object : Pickable
+var picked_object
 var currentFocus
 var lastFocus
 var locked : bool = false
@@ -78,11 +78,11 @@ func interaction_cast() -> void:
 func _physics_process(_delta: float) -> void:
 	
 	# add to inventory
-	if Input.is_action_just_pressed("take") and picked_object is Item and picked_object != null:
-		#TODO add to inventory if room
-		print("added to inventory")
-		picked_object.queue_free()
-		picked_object = null
+	#if Input.is_action_just_pressed("take") and picked_object is Item and picked_object != null:
+		##TODO add to inventory if room
+		#print("added to inventory")
+		#picked_object.queue_free()
+		#picked_object = null
 	## pull object towards player
 	if Input.is_action_pressed("interact") and picked_object != null:
 		JOINT.set_node_b(picked_object.get_path())

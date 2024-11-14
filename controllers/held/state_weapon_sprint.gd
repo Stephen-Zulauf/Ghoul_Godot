@@ -1,6 +1,6 @@
 class_name StateWeaponSprint extends State
 
-@export var WEAPON : ControllerWeapon
+@export var ITEM : ControllerHeld
 @export var ANIMATION : AnimationPlayer
 
 func enter() -> void:
@@ -29,5 +29,6 @@ func update(_delta):
 	if get_parent().BUS.Falling:
 		transition.emit("stateWeaponFall")
 	
-func _physics_process(delta: float) -> void:
-	WEAPON.update_sway(delta)
+func _physics_process(_delta: float) -> void:
+	pass
+	#WEAPON.update_sway(delta)
