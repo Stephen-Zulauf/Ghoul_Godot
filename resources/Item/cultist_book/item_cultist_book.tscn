@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://pk3cy54nimi6"]
 
 [ext_resource type="Texture2D" uid="uid://8mqx01qnef1q" path="res://resources/Item/cultist_book/cultist_book_0.png" id="2_3whcm"]
-[ext_resource type="Script" path="res://resources/interaction_component.gd" id="3_d57nl"]
+[ext_resource type="Script" path="res://controllers/inventory/interaction_component.gd" id="3_d57nl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c1b3y"]
 size = Vector3(0.757446, 0.224792, 1)

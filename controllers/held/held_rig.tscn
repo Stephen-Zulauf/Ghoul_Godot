@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://controllers/held/controller_held.gd" id="1_bgr05"]
 
 [node name="HeldRig" type="Node3D"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.62, -0.885, -0.73)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, -0.885, -0.73)
 script = ExtResource("1_bgr05")
 
 [node name="ItemMesh" type="MeshInstance3D" parent="."]

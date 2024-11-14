@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://resources/pickables/Chicken/chicken.gd" id="1_qowjg"]
 [ext_resource type="Texture2D" uid="uid://dk3of4e5lul5l" path="res://resources/pickables/Chicken/chicken_Image_0.png" id="3_vk0g6"]
-[ext_resource type="Script" path="res://resources/interaction_component.gd" id="3_ynlt0"]
+[ext_resource type="Script" path="res://controllers/inventory/interaction_component.gd" id="3_ynlt0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_os38a"]
 resource_name = "Chicken1_Mat"

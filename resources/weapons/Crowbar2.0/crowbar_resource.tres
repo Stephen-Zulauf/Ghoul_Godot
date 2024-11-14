@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bjw5nprioe3yd"]
 
 [ext_resource type="ArrayMesh" uid="uid://dv8cijmw0kdk6" path="res://resources/weapons/Crowbar2.0/crowbar_mesh.tres" id="1_74gxw"]
-[ext_resource type="Script" path="res://resources/Item.gd" id="1_mybw7"]
+[ext_resource type="Script" path="res://controllers/inventory/Item_resource.gd" id="1_mybw7"]
 [ext_resource type="PackedScene" uid="uid://cms26vvobj27t" path="res://resources/weapons/Crowbar2.0/crowbar_2_0.tscn" id="2_cmbp2"]
 
 [resource]

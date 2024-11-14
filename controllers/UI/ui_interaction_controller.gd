@@ -4,9 +4,10 @@ class_name UIInteractionController extends CanvasLayer
 @export var context : Label
 @export var default_icon : Texture2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	UiController.Interaction = self
+	UiController.gInteraction = self
 	self.add_user_signal("focused")
 	self.add_user_signal("unfocused")
 	self.add_user_signal("interacted")
@@ -42,3 +43,8 @@ func on_focus(image: Texture2D, override: bool, text: String) -> void:
 func on_unfocus() -> void:
 	reset()
 	self.visible = false
+	
+
+	
+	
+	

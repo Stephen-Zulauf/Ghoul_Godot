@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://coktmac47j42j"]
+[gd_scene load_steps=12 format=3 uid="uid://coktmac47j42j"]
 
 [ext_resource type="MeshLibrary" uid="uid://c726i5p1djspe" path="res://environment/blender/exported_glbs/walls_dungeon/walls.tres" id="1_rij2p"]
 [ext_resource type="PackedScene" uid="uid://1xqo5lfuq12t" path="res://controllers/fps/fps_controller.tscn" id="2_mi61b"]
 [ext_resource type="PackedScene" uid="uid://da3d651akb8ir" path="res://resources/pickables/Chicken/chicken.tscn" id="3_m38t8"]
 [ext_resource type="PackedScene" uid="uid://lfv40fbbr2v4" path="res://resources/environment/rustic_wood_table/env_rustic_wood_table.tscn" id="4_kyrvh"]
 [ext_resource type="PackedScene" uid="uid://pk3cy54nimi6" path="res://resources/Item/cultist_book/item_cultist_book.tscn" id="5_20s3m"]
+[ext_resource type="PackedScene" uid="uid://cms26vvobj27t" path="res://resources/weapons/Crowbar2.0/crowbar_2_0.tscn" id="6_vmk5h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tlqt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -73,3 +74,6 @@ transform = Transform3D(0.012, 0, 0, 0, 0.012, 0, 0, 0, 0.012, 6.53363, 0, -21.7
 
 [node name="cultist_book" parent="." instance=ExtResource("5_20s3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34008, 1.0792, -21.9798)
+
+[node name="Crowbar2_0" parent="." instance=ExtResource("6_vmk5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83366, 0, -20.8797)

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://bigfbcq2wabt4"]
+
+[ext_resource type="Script" path="res://controllers/inventory/Inventory_resource.gd" id="1_hanu3"]
+
+[resource]
+script = ExtResource("1_hanu3")
+name = &"TestInventory"
+slots = 4

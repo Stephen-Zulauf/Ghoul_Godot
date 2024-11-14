@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cms26vvobj27t"]
 
 [ext_resource type="ArrayMesh" uid="uid://dv8cijmw0kdk6" path="res://resources/weapons/Crowbar2.0/crowbar_mesh.tres" id="1_7b1q1"]
-[ext_resource type="Script" path="res://resources/interaction_component.gd" id="2_4joy8"]
+[ext_resource type="Script" path="res://controllers/inventory/interaction_component.gd" id="2_4joy8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_61xfp"]
 points = PackedVector3Array(-1.37174, 0.457143, 0.0857143, -1.37174, 0.457143, -0.0857143, -1.55746, 0.385648, 0.0714173, -1.52863, 0.314272, 0.0714173, -1.58596, 0.01908, 0.0499888, -1.51455, -5.66393e-05, 0.0499888, 1.8, -0.15, 0.0799921, 1.49996, 0.0499839, 0.0499888, -1.51455, -5.66393e-05, -0.0500056, -1.58596, 0.01908, -0.0500056, -1.52863, 0.314272, -0.0714342, -1.55746, 0.385648, -0.0714342, 1.49996, 0.0499839, -0.0500056, 1.8, -0.15, -0.080009, -1.64295, 0.328535, 0.0285602, -1.69204, 0.23927, 0.0214118, -1.61445, 0.285686, 0.0571372, -1.64741, 0.216806, 0.0499888, -1.65736, 0.142814, 0.0499888, -1.63814, 0.0713789, 0.0499888, -1.61102, -0.0241855, 0.0214118, -1.51455, -0.0500378, 0.0214118, -1.51455, -0.0500378, -0.0214454, -1.61102, -0.0241855, -0.0214454, -1.63814, 0.0713789, -0.0500056, -1.65736, 0.142814, -0.0500056, -1.64741, 0.216806, -0.0500056, -1.69204, 0.23927, -0.0214454, -1.64295, 0.328535, -0.0285771, -1.70714, 0.142814, 0.0214118, -1.6814, 0.0464181, 0.0214118, -1.6814, 0.0464181, -0.0214454, -1.70714, 0.142814, -0.0214454)
@@ -10,14 +10,14 @@ points = PackedVector3Array(-1.37174, 0.457143, 0.0857143, -1.37174, 0.457143, -
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
+[node name="InteractionComponent" type="Node" parent="RigidBody3D" node_paths=PackedStringArray("MESH")]
+script = ExtResource("2_4joy8")
+MESH = NodePath("../Crowbar_Crowbar_0")
+context = "Crowbar"
+
 [node name="Crowbar_Crowbar_0" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = ExtResource("1_7b1q1")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("ConvexPolygonShape3D_61xfp")
-
-[node name="InteractionComponent" type="Node" parent="." node_paths=PackedStringArray("MESH")]
-script = ExtResource("2_4joy8")
-MESH = NodePath("../RigidBody3D/Crowbar_Crowbar_0")
-context = "Crowbar"

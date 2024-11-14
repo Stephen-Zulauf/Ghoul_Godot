@@ -1,9 +1,9 @@
 extends Node
 
-var Debug : CanvasLayer
-var Inventory : CanvasLayer
-var Interaction : CanvasLayer
-var Recticle : CanvasLayer
+var gDebug : CanvasLayer
+var gInventory : CanvasLayer
+var gInteraction : CanvasLayer
+var gRecticle : CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
