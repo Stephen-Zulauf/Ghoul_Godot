@@ -1,4 +1,4 @@
-class_name ControllerInteraction extends Node3D
+class_name InteractRig extends Node3D
 
 @export var HAND_LENGTH : float = 2.0
 @export var RAY_LENGTH : float = 2.0
@@ -17,6 +17,7 @@ var picked_object_resource : Item = null
 var currentFocus
 var lastFocus
 var locked : bool = false
+var taken : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +26,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
+	taken = false
 	
 	#get collision
 	interaction_cast()
@@ -43,6 +46,10 @@ func _process(_delta: float) -> void:
 		await focus.tree_exited
 		#currentFocus.get_parent_node().queue_free()
 		currentFocus = null
+		taken = true
+		
+	if Input.is_action_just_pressed("take") and !currentFocus and !taken:
+		inventory.remove_from_inventory()
 	
 	#check for focus and unfocus from last frame
 	if lastFocus != currentFocus and !Input.is_action_pressed("interact"):

@@ -11,6 +11,9 @@ extends CharacterBody3D
 @export var ANIMATIONPLAYER: AnimationPlayer
 @export var CROUCH_SHAPECAST: ShapeCast3D
 
+#test access to gridmap
+@export var GRID : GridMap
+
 var _mouse_input: bool = false
 var _mouse_rotation: Vector3
 var _rotation_input: float

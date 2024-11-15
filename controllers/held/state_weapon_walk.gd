@@ -1,6 +1,6 @@
 class_name StateWeaponWalk extends State
 
-@export var ITEM : ControllerHeld
+@export var ITEM : HeldRig
 @export var ANIMATION : AnimationPlayer
 
 func enter() -> void:

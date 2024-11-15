@@ -368,9 +368,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
-[node name="Held_Rig" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
+[node name="ControllerHeld" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
 
-[node name="Ray_Cast_Interaction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("CAMERA", "inventory") instance=ExtResource("3_vmhoc")]
+[node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("CAMERA", "inventory") instance=ExtResource("3_vmhoc")]
 CAMERA = NodePath("..")
 inventory = NodePath("../../../Inventory_controller")
 
@@ -560,7 +560,7 @@ stretch_mode = 5
 [node name="Inventory_controller" type="Node" parent="." node_paths=PackedStringArray("heldRig")]
 script = ExtResource("11_wlnrh")
 inventory = ExtResource("11_rw78d")
-heldRig = NodePath("../Camera_controller/Camera3D/Held_Rig")
+heldRig = NodePath("../Camera_controller/Camera3D/ControllerHeld")
 
 [node name="State_Bus" type="Node" parent="."]
 script = ExtResource("5_61n3a")

@@ -1,7 +1,7 @@
 class_name ControllerInventory extends Node
 
 @export var inventory : Inventory
-@export var heldRig : ControllerHeld
+@export var heldRig : HeldRig
 
 var currentIndex : int = 0
 
@@ -53,7 +53,17 @@ func add_to_inventory(item: Item):
 		
 func remove_from_inventory():
 	if inventory.items[currentIndex] :
+		var new_node = InteractionComponent.new()
+		new_node.resource = inventory.items[currentIndex]
+		new_node.position = heldRig.global_position
+		var grid = get_parent().get_parent()
+		print("adding: " + new_node.resource.context)
+		grid.add_child(new_node)
+
 		inventory.items.remove_at(currentIndex)
 		inventory.items.insert(currentIndex, null)
+		UiController.gInventory.emit_signal("setInventory", inventory.items)
+		heldRig.ITEM = inventory.items[currentIndex]
+		heldRig.load_item()
 		
 	
