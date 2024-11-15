@@ -12,7 +12,7 @@ class_name ControllerInteraction extends Node3D
 
 @export var inventory : ControllerInventory
 
-var picked_object
+var picked_object : RigidBody3D
 var picked_object_resource : Item = null
 var currentFocus
 var lastFocus
@@ -81,11 +81,15 @@ func interaction_cast() -> void:
 func _physics_process(_delta: float) -> void:
 	
 	# add to inventory
-	#if Input.is_action_just_pressed("take") and picked_object is Item and picked_object != null:
-		##TODO add to inventory if room
+	if Input.is_action_just_pressed("take") and currentFocus != null and currentFocus.get_parent() is InteractionComponent:
+		#TODO add to inventory if room
+		var focus : InteractionComponent = currentFocus.get_parent()
+		print(focus.resource.context)
+		inventory.add_to_inventory(focus.resource)
 		#print("added to inventory")
-		#picked_object.queue_free()
-		#picked_object = null
+		focus.queue_free()
+		#currentFocus.get_parent_node().queue_free()
+		currentFocus = null
 	## pull object towards player
 	if Input.is_action_pressed("interact") and picked_object != null:
 		JOINT.set_node_b(picked_object.get_path())

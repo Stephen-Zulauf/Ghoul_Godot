@@ -47,6 +47,7 @@ func cycle_backward():
 func add_to_inventory(item: Item):
 	if item.inventory:
 		inventory.items.insert(currentIndex, item)
+		UiController.gInventory.emit_signal("setInventory", inventory.items)
 		
 func remove_from_inventory():
 	if inventory.items[currentIndex] :
