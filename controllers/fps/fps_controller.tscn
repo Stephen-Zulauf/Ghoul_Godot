@@ -369,7 +369,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
 [node name="ControllerHeld" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
-transform = Transform3D(0.4, 0, 2.18557e-08, 1.74846e-08, 1.91069e-16, -0.5, 0, 0.1, 9.55343e-16, 0.305, -0.3, -0.485)
 
 [node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("CAMERA", "inventory") instance=ExtResource("3_vmhoc")]
 CAMERA = NodePath("..")

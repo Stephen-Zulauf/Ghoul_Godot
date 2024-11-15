@@ -32,6 +32,18 @@ func _process(_delta: float) -> void:
 	#send current colsion object to debug panel
 	#Debug.fpsControllerDebugPanel.add_property(RAY.name, currentFocus, 1)
 	
+	# add to inventory
+	if Input.is_action_just_pressed("take") and currentFocus != null and currentFocus.get_parent() is InteractionComponent:
+		#TODO add to inventory if room
+		var focus : InteractionComponent = currentFocus.get_parent()
+		print(focus.resource.context)
+		inventory.add_to_inventory(focus.resource)
+		#print("added to inventory")
+		focus.queue_free()
+		await focus.tree_exited
+		#currentFocus.get_parent_node().queue_free()
+		currentFocus = null
+	
 	#check for focus and unfocus from last frame
 	if lastFocus != currentFocus and !Input.is_action_pressed("interact"):
 		if lastFocus and lastFocus.has_user_signal("unfocused"):
@@ -66,6 +78,7 @@ func un_pick_object() -> bool:
 		return true
 	else:
 		return false
+	
 		
 func interaction_cast() -> void:
 	var space_state = CAMERA.get_world_3d().direct_space_state
@@ -79,17 +92,7 @@ func interaction_cast() -> void:
 	currentFocus = result.get("collider")
 	
 func _physics_process(_delta: float) -> void:
-	
-	# add to inventory
-	if Input.is_action_just_pressed("take") and currentFocus != null and currentFocus.get_parent() is InteractionComponent:
-		#TODO add to inventory if room
-		var focus : InteractionComponent = currentFocus.get_parent()
-		print(focus.resource.context)
-		inventory.add_to_inventory(focus.resource)
-		#print("added to inventory")
-		focus.queue_free()
-		#currentFocus.get_parent_node().queue_free()
-		currentFocus = null
+		
 	## pull object towards player
 	if Input.is_action_pressed("interact") and picked_object != null:
 		JOINT.set_node_b(picked_object.get_path())
