@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvnfw4jdvsyde"
-path.s3tc="res://.godot/imported/crowbar_v2_0.png-09225494ce00e06626c0cac2dd1b072f.s3tc.ctex"
+path.s3tc="res://.godot/imported/crowbar_v2_0.png-91bf704d5612c7bb19839dd5997c8253.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://resources/weapons/Crowbar2.0/crowbar_v2_0.png"
-dest_files=["res://.godot/imported/crowbar_v2_0.png-09225494ce00e06626c0cac2dd1b072f.s3tc.ctex"]
+source_file="res://resources/Items/weapons/crowbar2/crowbar_v2_0.png"
+dest_files=["res://.godot/imported/crowbar_v2_0.png-91bf704d5612c7bb19839dd5997c8253.s3tc.ctex"]
 
 [params]
 

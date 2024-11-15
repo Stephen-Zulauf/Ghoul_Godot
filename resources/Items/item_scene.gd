@@ -1,4 +1,7 @@
-class_name objectChicken extends RigidBody3D
+class_name ItemScene extends Node
+
+@export var scene_mesh : MeshInstance3D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -6,5 +9,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	pass

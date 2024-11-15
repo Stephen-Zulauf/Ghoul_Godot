@@ -44,17 +44,19 @@ func _input(event):
 
 #TODO update_hand_weapon
 func load_item() -> void:
-	item_mesh.mesh = ITEM.mesh #set weapon mesh
-	position = ITEM.position #set weapon postion
-	rotation_degrees = ITEM.rotation # set rotation
-	scale = ITEM.scale # set scale
+	if ITEM:
+		item_mesh.mesh = ITEM.mesh #set weapon mesh
+		position = ITEM.position #set weapon postion
+		rotation_degrees = ITEM.rotation # set rotation
+		scale = ITEM.scale # set scale
 	
-	#item_shadow.visible = ITEM.shadow
+		#item_shadow.visible = ITEM.shadow
 	
-	#idle vars
-	idle_sway_adjustment = ITEM.idle_sway
-	idle_sway_rotation_strength = ITEM.idle_sway_rotation
-	random_sway_amount = ITEM.random_sway_amount
+		#idle vars
+		idle_sway_adjustment = ITEM.idle_sway
+		idle_sway_rotation_strength = ITEM.idle_sway_rotation
+		random_sway_amount = ITEM.random_sway_amount
+	
 	
 func update_sway(delta) -> void:
 	#clamp

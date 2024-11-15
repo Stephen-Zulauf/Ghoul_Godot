@@ -3,6 +3,9 @@ class_name Item extends Resource
 # Universal
 @export_category("General")
 @export var name: StringName
+@export var context : String #hover-text
+@export var override_icon : bool #hover-icon
+@export var new_icon : Texture2D
 @export var mesh : Mesh
 @export var icon : Texture2D
 @export var scene : PackedScene

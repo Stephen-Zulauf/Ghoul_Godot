@@ -1,9 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://1xqo5lfuq12t"]
+[gd_scene load_steps=41 format=3 uid="uid://1xqo5lfuq12t"]
 
 [ext_resource type="Script" path="res://controllers/fps/controller_fps.gd" id="1_khnba"]
 [ext_resource type="Theme" uid="uid://cu4xrpcdp0en2" path="res://controllers/UI/debug_theme.tres" id="2_tcvjx"]
 [ext_resource type="PackedScene" uid="uid://cus63f2yed3ou" path="res://controllers/held/held_rig.tscn" id="2_tkaur"]
-[ext_resource type="Resource" uid="uid://bjw5nprioe3yd" path="res://resources/weapons/Crowbar2.0/crowbar_resource.tres" id="3_1vhbd"]
 [ext_resource type="Script" path="res://controllers/UI/debug.gd" id="3_jbj6k"]
 [ext_resource type="PackedScene" uid="uid://ccx3ybctaty83" path="res://controllers/interact/controller_interaction.tscn" id="3_vmhoc"]
 [ext_resource type="Script" path="res://controllers/UI/ui_controller.gd" id="4_e0e7y"]
@@ -15,7 +14,6 @@
 [ext_resource type="Script" path="res://controllers/fps/state_sprint.gd" id="7_rpwli"]
 [ext_resource type="Script" path="res://controllers/UI/ui_inventory_controller.gd" id="8_is384"]
 [ext_resource type="Script" path="res://controllers/fps/state_crouch.gd" id="8_wpuks"]
-[ext_resource type="Texture2D" uid="uid://ddpjffq4pbrqt" path="res://resources/pickables/Chicken/Image_0_0.png" id="9_g6120"]
 [ext_resource type="Script" path="res://controllers/fps/state_jump.gd" id="9_joewa"]
 [ext_resource type="Texture2D" uid="uid://dv0ysk3cebq16" path="res://resources/global/crosshairs/Outline/crosshair179.png" id="10_6yi0w"]
 [ext_resource type="Script" path="res://controllers/fps/state_fall.gd" id="10_frovj"]
@@ -371,8 +369,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66462, 0)
 [node name="Camera3D" type="Camera3D" parent="Camera_controller"]
 
 [node name="ControllerHeld" parent="Camera_controller/Camera3D" instance=ExtResource("2_tkaur")]
-transform = Transform3D(0.00605393, 0.173362, 0.468945, -0.499695, 0.0174497, 0, -0.0163659, -0.468659, 0.173468, 0.62, -0.885, -0.73)
-ITEM = ExtResource("3_1vhbd")
+transform = Transform3D(0.4, 0, 2.18557e-08, 1.74846e-08, 1.91069e-16, -0.5, 0, 0.1, 9.55343e-16, 0.305, -0.3, -0.485)
 
 [node name="ControllerInteraction" parent="Camera_controller/Camera3D" node_paths=PackedStringArray("CAMERA") instance=ExtResource("3_vmhoc")]
 CAMERA = NodePath("..")
@@ -403,13 +400,16 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Debug/debugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="Inventory" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("slot0", "slot1", "slot2", "slot3")]
+[node name="Inventory" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("slot0", "overlay0", "slot1", "overlay1", "slot2", "overlay2", "slot3", "overlay3")]
 script = ExtResource("8_is384")
-default_icon = ExtResource("9_g6120")
 slot0 = NodePath("PanelContainer/HBoxContainer/Panel/TextureRect")
+overlay0 = NodePath("PanelContainer/HBoxContainer/Panel/ColorRect")
 slot1 = NodePath("PanelContainer/HBoxContainer/Panel2/TextureRect")
+overlay1 = NodePath("PanelContainer/HBoxContainer/Panel2/ColorRect")
 slot2 = NodePath("PanelContainer/HBoxContainer/Panel3/TextureRect")
+overlay2 = NodePath("PanelContainer/HBoxContainer/Panel3/ColorRect")
 slot3 = NodePath("PanelContainer/HBoxContainer/Panel4/TextureRect")
+overlay3 = NodePath("PanelContainer/HBoxContainer/Panel4/ColorRect")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Inventory"]
 anchors_preset = 12
@@ -436,6 +436,13 @@ offset_bottom = 32.0
 expand_mode = 5
 stretch_mode = 4
 
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
+
 [node name="Panel2" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
@@ -448,6 +455,13 @@ offset_right = 36.0
 offset_bottom = 32.0
 expand_mode = 5
 stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel2"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
 
 [node name="Panel3" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -462,6 +476,13 @@ offset_bottom = 32.0
 expand_mode = 5
 stretch_mode = 4
 
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel3"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
+
 [node name="Panel4" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
@@ -474,6 +495,13 @@ offset_right = 36.0
 offset_bottom = 32.0
 expand_mode = 5
 stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel4"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
 
 [node name="Intraction" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("icon", "context")]
 script = ExtResource("7_4jwko")
@@ -529,9 +557,10 @@ texture = ExtResource("10_6yi0w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Inventory_controller" type="Node" parent="."]
+[node name="Inventory_controller" type="Node" parent="." node_paths=PackedStringArray("heldRig")]
 script = ExtResource("11_wlnrh")
 inventory = ExtResource("11_rw78d")
+heldRig = NodePath("../Camera_controller/Camera3D/ControllerHeld")
 
 [node name="State_Bus" type="Node" parent="."]
 script = ExtResource("5_61n3a")

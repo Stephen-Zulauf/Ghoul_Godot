@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bcbg7p3ht86b6"
-path="res://.godot/imported/chicken.glb-4897a6406cdfab50c5d699463878c174.scn"
+uid="uid://bq3o1g6qeghvh"
+path="res://.godot/imported/crowbar_v2.glb-83bbce4bf789f3c61c4b0c54125b7159.scn"
 
 [deps]
 
-source_file="res://resources/pickables/Chicken/chicken.glb"
-dest_files=["res://.godot/imported/chicken.glb-4897a6406cdfab50c5d699463878c174.scn"]
+source_file="res://resources/Items/weapons/crowbar2/crowbar_v2.glb"
+dest_files=["res://.godot/imported/crowbar_v2.glb-83bbce4bf789f3c61c4b0c54125b7159.scn"]
 
 [params]
 

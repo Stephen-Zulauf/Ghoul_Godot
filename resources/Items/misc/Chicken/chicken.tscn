@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://da3d651akb8ir"]
+[gd_scene load_steps=9 format=4 uid="uid://da3d651akb8ir"]
 
-[ext_resource type="Script" path="res://resources/pickables/Chicken/chicken.gd" id="1_qowjg"]
-[ext_resource type="Texture2D" uid="uid://dk3of4e5lul5l" path="res://resources/pickables/Chicken/chicken_Image_0.png" id="3_vk0g6"]
-[ext_resource type="Script" path="res://controllers/inventory/interaction_component.gd" id="3_ynlt0"]
+[ext_resource type="Script" path="res://resources/Items/item_scene.gd" id="1_682u0"]
+[ext_resource type="Texture2D" uid="uid://dk3of4e5lul5l" path="res://resources/Items/misc/Chicken/chicken_Image_0.png" id="3_vk0g6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_os38a"]
 resource_name = "Chicken1_Mat"
@@ -101,13 +100,9 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5yc1k"]
 points = PackedVector3Array(-0.208519, 0.338674, -2.21953e-05, -0.0895559, 0.314276, -0.0832174, -0.105596, 0.236988, -0.0888868, -0.102967, 0.186123, -0.091488, -0.0747189, 0.0693133, -0.0996697, -0.146097, 0.184458, -0.0398412, -0.191009, 0.269038, -2.21953e-05, -0.146097, 0.184458, 0.039819, -0.0747189, 0.0693133, 0.0996476, -0.102967, 0.186123, 0.0914659, -0.105596, 0.236988, 0.0888646, -0.0895559, 0.314276, 0.0831953, 0.189362, 0.441889, 0.0261236, 0.176797, 0.455979, -2.21953e-05, 0.189362, 0.441889, -0.026168, 0.0104714, 0.234513, -0.111097, 0.156391, 0.426315, -0.0334381, 0.0527992, 0.00161305, -0.113565, -0.00463293, 0.00161305, -0.0996475, -0.0273563, 0.0021082, -0.0811498, -0.0907589, 0.061706, -0.0644307, -0.0907589, 0.061706, 0.0644085, -0.0273563, 0.0021082, 0.0811276, -0.00463293, 0.00161305, 0.0996253, 0.0527992, 0.00161305, 0.113565, 0.0104714, 0.234513, 0.111075, 0.156391, 0.426315, 0.033416, 0.219437, 0.408174, 0.0198317, 0.234051, 0.42546, -2.21953e-05, 0.220729, 0.445446, -2.21953e-05, 0.19413, 0.461155, -2.21953e-05, 0.136163, 0.234513, 0.0827506, 0.219437, 0.408174, -0.0198539, 0.136163, 0.234513, -0.0827728, 0.0540468, 0.00129795, -0.0649643, 0.0264669, 0.00143299, -0.0892648, 0.246661, 0.386343, -2.21953e-05, 0.17457, 0.234513, -2.21953e-05, 0.0264669, 0.00143299, 0.0892426, 0.0540468, 0.00129795, 0.0649421)
 
-[node name="Chicken" type="RigidBody3D"]
-script = ExtResource("1_qowjg")
-
-[node name="InteractionComponent" type="Node" parent="." node_paths=PackedStringArray("MESH")]
-script = ExtResource("3_ynlt0")
-MESH = NodePath("../Armature_001/Skeleton3D/Chicken_Chicken1_Mat_0")
-context = "Chicken"
+[node name="Chicken" type="RigidBody3D" node_paths=PackedStringArray("scene_mesh")]
+script = ExtResource("1_682u0")
+scene_mesh = NodePath("Armature_001/Skeleton3D/Chicken_Chicken1_Mat_0")
 
 [node name="Armature_001" type="Node3D" parent="."]
 transform = Transform3D(0.133228, 0.124282, 0.0025188, -0.123931, 0.133085, -0.0114769, -0.00966765, 0.00667837, 0.181835, 0.0882782, 0.325586, -0.008883)

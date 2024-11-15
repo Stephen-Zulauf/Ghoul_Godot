@@ -1,11 +1,11 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://bnfguwsy7bjhu"]
 
-[ext_resource type="Texture2D" uid="uid://dk3of4e5lul5l" path="res://resources/pickables/Chicken/chicken_Image_0.png" id="1_jjfjc"]
+[ext_resource type="Texture2D" uid="uid://dk3of4e5lul5l" path="res://resources/Items/misc/Chicken/chicken_Image_0.png" id="1_0n64q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_os38a"]
 resource_name = "Chicken1_Mat"
 cull_mode = 2
-albedo_texture = ExtResource("1_jjfjc")
+albedo_texture = ExtResource("1_0n64q")
 roughness = 0.830821
 texture_filter = 2
 

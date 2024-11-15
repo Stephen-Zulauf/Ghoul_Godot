@@ -10,7 +10,10 @@ class_name ControllerInteraction extends Node3D
 @export var THROW_STRENGTH: float = 5
 @export var CAMERA : Camera3D
 
+@export var inventory : ControllerInventory
+
 var picked_object
+var picked_object_resource : Item = null
 var currentFocus
 var lastFocus
 var locked : bool = false

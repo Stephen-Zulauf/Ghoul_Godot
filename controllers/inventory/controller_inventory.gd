@@ -1,6 +1,7 @@
 class_name ControllerInventory extends Node
 
 @export var inventory : Inventory
+@export var heldRig : ControllerHeld
 
 var currentIndex : int = 0
 
@@ -9,25 +10,39 @@ func _ready() -> void:
 	for slots in inventory.slots:
 		inventory.items.push_back(null)
 	UiController.gInventory.emit_signal("setInventory", inventory.items)
+	UiController.gInventory.emit_signal("focused", currentIndex)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("inv_forward"):
+		cycle_forward()
+	if Input.is_action_just_pressed("inv_backwards"):
+		cycle_backward()
+	if Input.is_action_just_pressed("inventory_show"):
+		UiController.gInventory.emit_signal("hide")
 
 func cycle_forward():
-	if currentIndex >= inventory.slots:
+	if currentIndex >= inventory.slots-1:
 		currentIndex = 0
 	else: 
 		currentIndex += 1
-	print(currentIndex)
+	UiController.gInventory.emit_signal("focused", currentIndex)
+	if inventory.items[currentIndex]:
+		heldRig.ITEM = inventory.items[currentIndex]
+		heldRig.load_item()
+	#print(currentIndex)
 
 func cycle_backward():
 	if currentIndex <= 0:
-		currentIndex = inventory.slots
+		currentIndex = inventory.slots - 1
 	else: 
 		currentIndex -= 1
-	print(currentIndex)
+	UiController.gInventory.emit_signal("focused", currentIndex)
+	if inventory.items[currentIndex]:
+		heldRig.ITEM = inventory.items[currentIndex]
+		heldRig.load_item()
+	#print(currentIndex)
 
 func add_to_inventory(item: Item):
 	if item.inventory:

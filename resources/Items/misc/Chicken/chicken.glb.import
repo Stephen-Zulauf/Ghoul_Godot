@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ck6rvslag43a3"
-path="res://.godot/imported/cultist_book.glb-aa47776f6839562005a391a174a08a4e.scn"
+uid="uid://bcbg7p3ht86b6"
+path="res://.godot/imported/chicken.glb-e454b5064ee3890bd066d4bb8b6567e5.scn"
 
 [deps]
 
-source_file="res://resources/Item/cultist_book/cultist_book.glb"
-dest_files=["res://.godot/imported/cultist_book.glb-aa47776f6839562005a391a174a08a4e.scn"]
+source_file="res://resources/Items/misc/Chicken/chicken.glb"
+dest_files=["res://.godot/imported/chicken.glb-e454b5064ee3890bd066d4bb8b6567e5.scn"]
 
 [params]
 

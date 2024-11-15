@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://pnbl7tgywrev"]
+
+[ext_resource type="Script" path="res://controllers/inventory/Item_resource.gd" id="1_ejpws"]
+[ext_resource type="Texture2D" uid="uid://ddpjffq4pbrqt" path="res://resources/Items/misc/Chicken/Image_0_0.png" id="1_hd6t0"]
+[ext_resource type="ArrayMesh" uid="uid://bnfguwsy7bjhu" path="res://resources/Items/misc/Chicken/chicken_mesh.tres" id="2_orond"]
+[ext_resource type="PackedScene" uid="uid://da3d651akb8ir" path="res://resources/Items/misc/Chicken/chicken.tscn" id="3_ekswy"]
+
+[resource]
+script = ExtResource("1_ejpws")
+name = &"chicken"
+context = "chicken"
+override_icon = false
+mesh = ExtResource("2_orond")
+icon = ExtResource("1_hd6t0")
+scene = ExtResource("3_ekswy")
+shadow = false
+pickable = true
+inventory = true
+weapon = true
+value = 0
+base_damage = 0.0
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+sway_min = Vector2(-20, -20)
+sway_max = Vector2(20, 20)
+sway_speed_position = 0.07
+sway_speed_rotation = 0.1
+sway_amount_position = 0.1
+sway_amount_rotation = 30.0
+idle_sway = 10.0
+idle_sway_rotation = 300.0
+random_sway_amount = 5.0

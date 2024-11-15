@@ -1,53 +1,63 @@
-class_name InteractionComponent extends Node
+class_name InteractionComponent extends Node3D
 
-@export var MESH : MeshInstance3D
-@export var context : String
-@export var override_icon : bool
-@export var new_icon : Texture2D
+@export var resource : Item
 
-var overlay = preload("res://resources/Item/item_overlay_material_3d.tres")
-var parent
+var overlay = preload("res://resources/Items/item_overlay_material_3d.tres")
+#var parent
+var child : ItemScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	parent = get_parent()
-	connect_parent()
+	instancing()
+	for c in get_children():
+		if c is ItemScene: 
+			child = c
+	connect_signals()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 	
+func instancing():
+	if resource:
+		var instance = resource.scene.instantiate()
+		add_child(instance)
+	
+	
 func on_focus() -> void:
 	#print("focused: " + parent.name)
-	if MESH:
-		MESH.material_overlay = overlay
-	UiController.gInteraction.emit_signal("focused", new_icon, override_icon, context)
+	if child.scene_mesh:
+		child.scene_mesh.material_overlay = overlay
+	UiController.gInteraction.emit_signal("focused", resource.new_icon, resource.override_icon, resource.context)
 	
 
 func on_unfocus() -> void:
 	#print("un-focused: " + parent.name)
-	if MESH:
-		MESH.material_overlay = null
+	if child.scene_mesh:
+		child.scene_mesh.material_overlay = null
 	UiController.gInteraction.emit_signal("unfocused")
 
 func on_interact() -> void:
 	#print("picked: " + parent.name)
-	if MESH:
-		MESH.material_overlay = null
+	if child.scene_mesh:
+		child.scene_mesh.material_overlay = null
 	UiController.gInteraction.emit_signal("unfocused")
 	UiController.gInteraction.emit_signal("interacted")
 
 func on_uninteract() -> void:
 	pass
-	#print("dropped: " + parent.name)
-	#UiController.Interaction.emit_signal("focused", new_icon, override_icon, context)
+	
+func get_resource() -> Item:
+	return resource
 
-func connect_parent() -> void:
-	parent.add_user_signal("focused")
-	parent.add_user_signal("unfocused")
-	parent.add_user_signal("interacted")
-	parent.add_user_signal("uninteracted")
-	parent.connect("focused", Callable(self, "on_focus"))
-	parent.connect("unfocused", Callable(self, "on_unfocus"))
-	parent.connect("interacted", Callable(self, "on_interact"))
-	parent.connect("uninteracted", Callable(self, "on_uninteract"))
+func connect_signals() -> void:
+	child.add_user_signal("focused")
+	child.add_user_signal("unfocused")
+	child.add_user_signal("interacted")
+	child.add_user_signal("uninteracted")
+	
+	child.connect("focused", Callable(self, "on_focus"))
+	child.connect("unfocused", Callable(self, "on_unfocus"))
+	child.connect("interacted", Callable(self, "on_interact"))
+	child.connect("uninteracted", Callable(self, "on_uninteract"))
+	

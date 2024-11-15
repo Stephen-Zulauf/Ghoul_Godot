@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8mqx01qnef1q"
-path.s3tc="res://.godot/imported/cultist_book_0.png-9983578bd102ba3581100294decc8932.s3tc.ctex"
+uid="uid://dk3of4e5lul5l"
+path.s3tc="res://.godot/imported/chicken_Image_0.png-91394883a16d7eb9d1d936c426d72bc0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "11416ad992d39cadad403e03911b6c96"
+"md5": "18bb2d98aed27c17624ce8df6399791a"
 }
 
 [deps]
 
-source_file="res://resources/Item/cultist_book/cultist_book_0.png"
-dest_files=["res://.godot/imported/cultist_book_0.png-9983578bd102ba3581100294decc8932.s3tc.ctex"]
+source_file="res://resources/Items/misc/Chicken/chicken_Image_0.png"
+dest_files=["res://.godot/imported/chicken_Image_0.png-91394883a16d7eb9d1d936c426d72bc0.s3tc.ctex"]
 
 [params]
 

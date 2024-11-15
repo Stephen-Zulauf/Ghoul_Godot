@@ -8,4 +8,4 @@ class_name Inventory extends Resource
 @export_category("Storage")
 @export var slots : int = 4
 
-var items : Array[Item]
+@export var items : Array[Item]
