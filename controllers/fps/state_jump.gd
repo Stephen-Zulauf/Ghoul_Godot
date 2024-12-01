@@ -24,8 +24,8 @@ func update(delta):
 	
 	if CONTROLLER.is_on_floor():
 		ANIMATION.play("JumpEnd")
-		if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
-			await ANIMATION.animation_finished
+		#if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
+			#await ANIMATION.animation_finished
 		if Input.is_action_pressed("sprint"):
 			transition.emit("stateSprint")
 		elif Input.is_action_pressed("move_forward"):

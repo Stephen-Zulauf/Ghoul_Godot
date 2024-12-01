@@ -1,4 +1,4 @@
-class_name ControllerFPS
+class_name CharacterController
 extends CharacterBody3D
 
 #mouse camera movement variables
@@ -7,12 +7,19 @@ extends CharacterBody3D
 @export var TILT_UPPER_LIMIT := deg_to_rad(90)
 @export var CAMERA_CONTROLLER : Node3D
 
-#animation
-@export var ANIMATIONPLAYER: AnimationPlayer
-@export var CROUCH_SHAPECAST: ShapeCast3D
+#movement variables
+@export var SPEED: float = 3.0
+@export var ACCELERATION: float = 1.5
+@export var DECCELERATION: float = 0.5
 
-#test access to gridmap
-@export var GRID : GridMap
+##animation
+@export var ANIMTREE: AnimationTree
+
+#@export var ANIMATIONPLAYER: AnimationPlayer
+#@export var CROUCH_SHAPECAST: ShapeCast3D
+#
+##test access to gridmap
+#@export var GRID : GridMap
 
 var _mouse_input: bool = false
 var _mouse_rotation: Vector3
@@ -56,12 +63,15 @@ func _ready():
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	CROUCH_SHAPECAST.add_exception($".")
+	#CROUCH_SHAPECAST.add_exception($".")
 
 func _physics_process(delta: float) -> void:
 	
 	#camera mouse movement
 	_update_camera(delta)
+	update_gravity(delta)
+	update_input(SPEED, ACCELERATION, DECCELERATION)
+	update_velocity()
 
 func update_gravity(delta) -> void:
 	velocity += get_gravity() * delta
@@ -77,4 +87,5 @@ func update_input(speed: float, acceleration: float, deceleration: float) -> voi
 		velocity.z = move_toward(velocity.z, 0, deceleration)
 	
 func update_velocity() -> void:
+	ANIMTREE.set("parameters/BlendSpace1D/blend_position", velocity.length()/SPEED)
 	move_and_slide()

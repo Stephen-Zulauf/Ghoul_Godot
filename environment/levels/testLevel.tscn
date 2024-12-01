@@ -1,15 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7vk5ml043cbc"]
+[gd_scene load_steps=8 format=3 uid="uid://b7vk5ml043cbc"]
 
 [ext_resource type="MeshLibrary" uid="uid://c726i5p1djspe" path="res://environment/blender/exported_glbs/walls_dungeon/walls.tres" id="1_emiev"]
-[ext_resource type="PackedScene" uid="uid://1xqo5lfuq12t" path="res://controllers/fps/fps_controller.tscn" id="2_u75os"]
 [ext_resource type="PackedScene" uid="uid://blxmylqs4lq03" path="res://controllers/inventory/interaction_component.tscn" id="3_fs5hp"]
 [ext_resource type="Resource" uid="uid://pnbl7tgywrev" path="res://resources/Items/misc/Chicken/chicken_resource.tres" id="4_0vqem"]
+[ext_resource type="PackedScene" uid="uid://caoorrhju1aye" path="res://controllers/character/female_test.tscn" id="4_hif5t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2y077"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2boy5"]
+sky_material = SubResource("ProceduralSkyMaterial_2y077")
+
+[sub_resource type="Environment" id="Environment_i6jx5"]
+background_mode = 2
+sky = SubResource("Sky_2boy5")
+ambient_light_color = Color(0.98881, 0.90946, 0.737668, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.02
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.979615, 0.854898, 0.580292, 1)
+fog_light_energy = 0.02
+fog_density = 0.1
 
 [node name="TestLevel" type="Node3D"]
 
-[node name="ControllerFPS" parent="." instance=ExtResource("2_u75os")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-MOUSE_SENSITIVITY = 1.5
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i6jx5")
 
 [node name="interaction_component" parent="." instance=ExtResource("3_fs5hp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86608, -1.78813e-07, 3.41596)
@@ -23,3 +42,6 @@ cell_center_y = false
 data = {
 "cells": PackedInt32Array(0, 0, 2, 0, 65535, 2, 65535, 65535, 2, 65535, 0, 2, 1, 0, 2, 1, 65535, 2, 65534, 65535, 1048579, 65534, 0, 2, 65534, 1, 2, 65535, 1, 2, 0, 1, 2, 1, 1, 2, 1, 2, 2, 0, 2, 2, 65535, 2, 2, 65534, 2, 655363, 2, 2, 1441792, 2, 1, 1441792, 2, 0, 1441792, 2, 65535, 1441792, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65535, 3, 655360, 0, 3, 655360, 1, 3, 655360, 65533, 0, 655362, 65533, 1, 655362, 65532, 0, 655362, 65532, 1, 655362, 65531, 0, 655362, 65531, 1, 655362, 65530, 0, 655362, 65530, 1, 655362, 65529, 0, 655362, 65529, 65535, 655362, 65530, 65535, 655362, 65530, 65534, 655362, 65529, 65534, 655362, 65529, 65533, 655362, 65530, 65533, 655362, 65530, 65532, 655362, 65529, 65532, 655362, 65530, 65531, 0, 65531, 65531, 0, 65531, 65532, 655362, 65532, 65532, 655362, 65533, 65532, 655362, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 1048579, 65534, 65532, 655362, 65535, 65531, 655362, 65535, 65532, 655362, 0, 65531, 655362, 0, 65530, 655362, 65535, 65530, 655362, 65535, 65529, 655362, 0, 65529, 655362, 65534, 65528, 655362, 1, 65528, 655362, 0, 65528, 655362, 65535, 65528, 655362, 65534, 65527, 655362, 65534, 65526, 655362, 65535, 65526, 655362, 1, 65526, 655362, 0, 65526, 655362, 65535, 65527, 655362, 0, 65527, 655362, 1, 65527, 655362, 65535, 65525, 655362, 0, 65525, 655362, 2, 65528, 1441792, 2, 65527, 1441792, 2, 65526, 1441792, 65533, 65528, 1048576, 65533, 65527, 1048576, 65533, 65526, 1048576, 65535, 65524, 0, 0, 65524, 0, 65534, 65524, 0, 1, 65524, 0, 2, 65525, 1441792, 1, 65529, 1441795, 65534, 65529, 655363, 1, 65525, 655362, 65534, 65525, 655362, 65533, 65525, 1048576, 2, 65524, 1, 65533, 65524, 1048577, 65533, 65529, 655361, 2, 65529, 1441793, 2, 65534, 1, 65534, 65534, 1048577, 65534, 3, 655361, 2, 3, 1441793, 1, 65533, 1441793, 65528, 2, 655361, 65529, 2, 655360, 65530, 2, 655360, 65531, 2, 655360, 65533, 2, 655360, 65532, 2, 655360, 65533, 65535, 0, 65532, 65535, 0, 65531, 65535, 3, 65531, 65534, 1441792, 65532, 65533, 655360, 65533, 65533, 655360, 65534, 65533, 655360, 0, 65533, 655360, 65535, 65533, 655360, 1, 65532, 1441792, 1, 65530, 1441792, 65531, 65533, 1441795, 65534, 65530, 1048576, 65529, 65531, 0, 65528, 65532, 1048576, 65528, 65533, 1048576, 65528, 65535, 1048576, 65528, 65534, 1048576, 65528, 0, 1048576, 65528, 1, 1048576, 65529, 1, 1048578, 0, 65532, 1048578, 65528, 65531, 1048577)
 }
+
+[node name="CharacterController" parent="." instance=ExtResource("4_hif5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.272956, 1.78814e-07, 2.07738)

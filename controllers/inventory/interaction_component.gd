@@ -25,7 +25,7 @@ func instancing():
 	
 	
 func on_focus() -> void:
-	#print("focused: " + parent.name)
+	#print("focused: " + child.name)
 	if child.scene_mesh:
 		child.scene_mesh.material_overlay = overlay
 	UiController.gInteraction.emit_signal("focused", resource.new_icon, resource.override_icon, resource.context)

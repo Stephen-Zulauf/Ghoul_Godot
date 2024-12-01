@@ -24,6 +24,6 @@ func load_item() -> void:
 	else:
 		held_mesh.mesh = null
 
-func _physics_process(_delta: float) -> void:
-	pass
+#func _physics_process(_delta: float) -> void:
+	#pass
 	
