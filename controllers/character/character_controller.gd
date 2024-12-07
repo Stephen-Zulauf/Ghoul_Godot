@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 #mouse camera movement variables
 @export var MOUSE_SENSITIVITY: float = 0.5
-@export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
+@export var TILT_LOWER_LIMIT := deg_to_rad(-70.0)
 @export var TILT_UPPER_LIMIT := deg_to_rad(90)
 @export var CAMERA_CONTROLLER : Node3D
 
@@ -14,6 +14,9 @@ extends CharacterBody3D
 
 ##animation
 @export var ANIMTREE: AnimationTree
+
+#state realted vars
+@onready var StateDebugger = $StateChartDebugger
 
 #@export var ANIMATIONPLAYER: AnimationPlayer
 #@export var CROUCH_SHAPECAST: ShapeCast3D
@@ -32,6 +35,12 @@ var _camera_rotation: Vector3
 func _input(event):
 	if event.is_action_pressed("exit"):
 		get_tree().quit()
+		
+	if event.is_action_pressed("debug"):
+		if StateDebugger.visible:
+			StateDebugger.visible = false
+		else:
+			StateDebugger.visible = true
 
 func _unhandled_input(event):
 	#handle mouse movement
@@ -60,7 +69,7 @@ func _update_camera(delta):
 	_tilt_input = 0.0
 
 func _ready():
-	
+	StateDebugger.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	#CROUCH_SHAPECAST.add_exception($".")
@@ -69,9 +78,6 @@ func _physics_process(delta: float) -> void:
 	
 	#camera mouse movement
 	_update_camera(delta)
-	update_gravity(delta)
-	update_input(SPEED, ACCELERATION, DECCELERATION)
-	update_velocity()
 
 func update_gravity(delta) -> void:
 	velocity += get_gravity() * delta
@@ -87,5 +93,5 @@ func update_input(speed: float, acceleration: float, deceleration: float) -> voi
 		velocity.z = move_toward(velocity.z, 0, deceleration)
 	
 func update_velocity() -> void:
-	ANIMTREE.set("parameters/BlendSpace1D/blend_position", velocity.length()/SPEED)
+	#ANIMTREE.set("parameters/idle->walk/blend_position", velocity.length()/SPEED)
 	move_and_slide()
