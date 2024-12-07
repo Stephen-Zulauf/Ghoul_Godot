@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0b5ea8yxgq41"
-path="res://.godot/imported/Crouch Walk Forward.fbx-cdad1637ba980130635a0f74a53804a6.scn"
+uid="uid://uh1cocpxgtem"
+path="res://.godot/imported/Falling.fbx-dcd244545e114d43a77e02955aac13c0.scn"
 
 [deps]
 
-source_file="res://resources/mixamo/female_base/Crouch Walk Forward.fbx"
-dest_files=["res://.godot/imported/Crouch Walk Forward.fbx-cdad1637ba980130635a0f74a53804a6.scn"]
+source_file="res://resources/mixamo/female_base/Falling.fbx"
+dest_files=["res://.godot/imported/Falling.fbx-dcd244545e114d43a77e02955aac13c0.scn"]
 
 [params]
 

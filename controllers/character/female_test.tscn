@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://caoorrhju1aye"]
+[gd_scene load_steps=72 format=4 uid="uid://caoorrhju1aye"]
 
 [ext_resource type="AnimationLibrary" uid="uid://f8xgixyrboo4" path="res://resources/mixamo/res_libs/female_locomotion_lib.res" id="1_k0usw"]
 [ext_resource type="Script" path="res://controllers/character/character_controller.gd" id="1_vuqo8"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://controllers/character/skeleton_ik_3d.gd" id="2_xqmsb"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_6rx8y"]
 [ext_resource type="Script" path="res://controllers/character/state_interface.gd" id="5_27sf3"]
+[ext_resource type="AnimationLibrary" uid="uid://d01ky5eajx4ke" path="res://resources/mixamo/res_libs/female_locomotion_libPT2.res" id="5_enq6t"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="5_fk8tw"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_1lthi"]
+[ext_resource type="AnimationLibrary" uid="uid://brshhwi7bqsdj" path="res://resources/mixamo/res_libs/female_locomotion_libPT3.res" id="6_d72ko"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_eysu3"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_086hf"]
 
@@ -993,8 +995,35 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mlsoc"]
 radius = 0.25
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msalt"]
+animation = &"female_locomotion_libPT2/crouch_forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i8cfo"]
+animation = &"female_locomotion_libPT2/crouch_back"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d00h6"]
+animation = &"female_locomotion_libPT2/crouch_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sjpud"]
+animation = &"female_locomotion_libPT2/crouch_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2a64d"]
+animation = &"female_locomotion_libPT2/crouch_idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_rwr1y"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_msalt")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_i8cfo")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_d00h6")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_sjpud")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_2a64d")
+blend_point_4/pos = Vector2(0, 0)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_af2pm"]
-animation = &"female_locomotion_lib/Tpose"
+animation = &"female_locomotion_libPT3/fall_float"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5pgb"]
 animation = &"female_locomotion_lib/idle"
@@ -1011,8 +1040,11 @@ animation = &"female_locomotion_lib/strafeRunR"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46eo8"]
 animation = &"female_locomotion_lib/run"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuvp6"]
-animation = &"female_locomotion_lib/run"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l1tcu"]
+animation = &"female_locomotion_lib/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mhsl5"]
+animation = &"female_locomotion_libPT2/run_backwards"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_44dex"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_5oh8u")
@@ -1021,8 +1053,10 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_jseaw")
 blend_point_1/pos = Vector2(1, 0)
 blend_point_2/node = SubResource("AnimationNodeAnimation_46eo8")
 blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_tuvp6")
-blend_point_3/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_l1tcu")
+blend_point_3/pos = Vector2(0, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_mhsl5")
+blend_point_4/pos = Vector2(0, -1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_prtby"]
 animation = &"female_locomotion_lib/strafeL"
@@ -1033,8 +1067,8 @@ animation = &"female_locomotion_lib/strafeR"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r1fq"]
 animation = &"female_locomotion_lib/walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8khdv"]
-animation = &"female_locomotion_lib/walk"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_76qp2"]
+animation = &"female_locomotion_libPT2/walk_backwards"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xid0c"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_prtby")
@@ -1043,7 +1077,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_35b0b")
 blend_point_1/pos = Vector2(1, 0)
 blend_point_2/node = SubResource("AnimationNodeAnimation_4r1fq")
 blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_8khdv")
+blend_point_3/node = SubResource("AnimationNodeAnimation_76qp2")
 blend_point_3/pos = Vector2(0, -1)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccydn"]
@@ -1053,7 +1087,7 @@ xfade_time = 0.25
 xfade_time = 0.25
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pifnn"]
-xfade_time = 0.25
+xfade_time = 0.15
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ljodi"]
 xfade_time = 0.25
@@ -1100,7 +1134,39 @@ xfade_time = 0.25
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_grmr2"]
 xfade_time = 0.25
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4gu5a"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oairn"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jccc"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t6pch"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_baupc"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n88cd"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_05x0y"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s47h4"]
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o4kw6"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1iy7o"]
+xfade_time = 0.3
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_obgnr"]
+states/crouch/node = SubResource("AnimationNodeBlendSpace2D_rwr1y")
+states/crouch/position = Vector2(543, 264)
 states/fall/node = SubResource("AnimationNodeAnimation_af2pm")
 states/fall/position = Vector2(682, 193)
 states/idle/node = SubResource("AnimationNodeAnimation_q5pgb")
@@ -1111,7 +1177,8 @@ states/run/node = SubResource("AnimationNodeBlendSpace2D_44dex")
 states/run/position = Vector2(386, 193)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_xid0c")
 states/walk/position = Vector2(386, 86)
-transitions = ["walk", "jump", SubResource("AnimationNodeStateMachineTransition_ccydn"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_4ijk1"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_pifnn"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_ljodi"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_0nlb4"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_t5vro"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_gpjws"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_apj68"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_5lopc"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_bl2kl"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_tfja7"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_byodd"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ymbqi"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1bwx4"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_vbop6"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_uxchg"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_do7b1"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_grmr2")]
+transitions = ["walk", "jump", SubResource("AnimationNodeStateMachineTransition_ccydn"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_4ijk1"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_pifnn"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_ljodi"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_0nlb4"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_t5vro"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_gpjws"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_apj68"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_5lopc"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_bl2kl"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_tfja7"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_byodd"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ymbqi"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1bwx4"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_vbop6"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_uxchg"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_do7b1"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_grmr2"), "crouch", "idle", SubResource("AnimationNodeStateMachineTransition_4gu5a"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_oairn"), "run", "crouch", SubResource("AnimationNodeStateMachineTransition_8jccc"), "crouch", "run", SubResource("AnimationNodeStateMachineTransition_t6pch"), "walk", "crouch", SubResource("AnimationNodeStateMachineTransition_baupc"), "crouch", "walk", SubResource("AnimationNodeStateMachineTransition_n88cd"), "fall", "crouch", SubResource("AnimationNodeStateMachineTransition_05x0y"), "crouch", "fall", SubResource("AnimationNodeStateMachineTransition_s47h4"), "jump", "crouch", SubResource("AnimationNodeStateMachineTransition_o4kw6"), "crouch", "jump", SubResource("AnimationNodeStateMachineTransition_1iy7o")]
+graph_offset = Vector2(-106, 23.7828)
 
 [node name="CharacterController" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "ANIMTREE")]
 script = ExtResource("1_vuqo8")
@@ -1620,7 +1687,7 @@ transform = Transform3D(-0.999551, -0.0170666, 0.0246433, -0.0177951, 0.999402, 
 [node name="SpringArm3D" type="SpringArm3D" parent="X Bot/GeneralSkeleton/BoneAttachment3D/SpringArmPivot"]
 transform = Transform3D(1, 1.0588e-07, 2.79397e-08, -1.74623e-10, 1, -1.84402e-07, 3.72529e-09, 5.96046e-08, 1, 0.00430413, -0.0101578, -0.0871486)
 collision_mask = 2
-spring_length = 3.0
+spring_length = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="X Bot/GeneralSkeleton/BoneAttachment3D/SpringArmPivot/SpringArm3D"]
 transform = Transform3D(1, -9.28412e-08, -9.31323e-09, 9.37143e-09, 1, 1.21072e-07, 1.86265e-09, -1.86265e-09, 0.999999, 0.00328963, 0.0257734, 0.163283)
@@ -1639,7 +1706,9 @@ script = ExtResource("2_xqmsb")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="X Bot"]
 libraries = {
 "": SubResource("AnimationLibrary_mny2m"),
-"female_locomotion_lib": ExtResource("1_k0usw")
+"female_locomotion_lib": ExtResource("1_k0usw"),
+"female_locomotion_libPT2": ExtResource("5_enq6t"),
+"female_locomotion_libPT3": ExtResource("6_d72ko")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1653,6 +1722,7 @@ script = ExtResource("5_27sf3")
 root_node = NodePath("../X Bot")
 tree_root = SubResource("AnimationNodeStateMachine_obgnr")
 anim_player = NodePath("../X Bot/AnimationPlayer")
+parameters/crouch/blend_position = Vector2(0, 0)
 parameters/run/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 

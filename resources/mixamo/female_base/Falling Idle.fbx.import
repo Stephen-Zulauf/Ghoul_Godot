@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8472wng7a3p"
-path="res://.godot/imported/Crouch Idle 01.fbx-12ce90c357319ee371154e269a446548.scn"
+uid="uid://cf12d6cp2cjyt"
+path="res://.godot/imported/Falling Idle.fbx-6db9e1d7d663f4658874e5b7b09e667d.scn"
 
 [deps]
 
-source_file="res://resources/mixamo/female_base/Crouch Idle 01.fbx"
-dest_files=["res://.godot/imported/Crouch Idle 01.fbx-12ce90c357319ee371154e269a446548.scn"]
+source_file="res://resources/mixamo/female_base/Falling Idle.fbx"
+dest_files=["res://.godot/imported/Falling Idle.fbx-6db9e1d7d663f4658874e5b7b09e667d.scn"]
 
 [params]
 

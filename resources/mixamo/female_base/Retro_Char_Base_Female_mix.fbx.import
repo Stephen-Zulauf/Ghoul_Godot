@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnbqoiyfl1gas"
+uid="uid://cbvau2kquxxwf"
 path="res://.godot/imported/Retro_Char_Base_Female_mix.fbx-731825c3f934a857aab58ce1ef38402f.scn"
 
 [deps]
@@ -31,14 +31,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Armature/Skeleton3D": {
-"rest_pose/external_animation_library": null,
-"retarget/bone_map": Resource("res://resources/mixamo/Mixamo BoneMap.tres")
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://r3q62v4a8rs1"
+uid="uid://cni3s6cv8tnrn"
 path="res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"
 
 [deps]
@@ -31,14 +31,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Skeleton3D": {
-"rest_pose/external_animation_library": null,
-"retarget/bone_map": Resource("res://resources/mixamo/Mixamo BoneMap.tres")
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1
