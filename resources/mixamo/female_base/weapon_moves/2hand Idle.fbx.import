@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://csq7l8x85tnb2"
-path="res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"
+uid="uid://dwnf1jjkvcfnt"
+path="res://.godot/imported/2hand Idle.fbx-b9e6e2fb5f0dd1d1793affe3abbdd033.scn"
 
 [deps]
 
-source_file="res://resources/mixamo/female_base/X Bot.fbx"
-dest_files=["res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"]
+source_file="res://resources/mixamo/female_base/weapon_moves/2hand Idle.fbx"
+dest_files=["res://.godot/imported/2hand Idle.fbx-b9e6e2fb5f0dd1d1793affe3abbdd033.scn"]
 
 [params]
 

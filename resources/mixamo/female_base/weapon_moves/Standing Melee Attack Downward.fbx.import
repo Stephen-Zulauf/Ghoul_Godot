@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://csq7l8x85tnb2"
-path="res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"
+uid="uid://c0en0fdymebat"
+path="res://.godot/imported/Standing Melee Attack Downward.fbx-2f4dd913823ddad65905636df496db1b.scn"
 
 [deps]
 
-source_file="res://resources/mixamo/female_base/X Bot.fbx"
-dest_files=["res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"]
+source_file="res://resources/mixamo/female_base/weapon_moves/Standing Melee Attack Downward.fbx"
+dest_files=["res://.godot/imported/Standing Melee Attack Downward.fbx-2f4dd913823ddad65905636df496db1b.scn"]
 
 [params]
 

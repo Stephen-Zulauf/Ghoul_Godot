@@ -15,11 +15,6 @@ run/main_scene="res://environment/levels/testLevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Debug="*res://Global/debug.gd"
-UiController="*res://controllers/UI/ui_controller.gd"
-
 [display]
 
 window/size/viewport_width=480

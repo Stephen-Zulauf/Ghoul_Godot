@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dfru05ujgmcji"]
+
+[ext_resource type="PackedScene" uid="uid://bvehq60bu8l5w" path="res://Items/misc/chicken/chicken.tscn" id="1_sy1ym"]
+[ext_resource type="Script" path="res://controllers/Item/item_resource.gd" id="1_tv73f"]
+
+[resource]
+script = ExtResource("1_tv73f")
+Name = "Chicken"
+Type = "misc"
+Scene = ExtResource("1_sy1ym")

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://blxmylqs4lq03"]
-
-[ext_resource type="Script" path="res://controllers/inventory/interaction_component.gd" id="1_2x7f4"]
-
-[node name="interaction_component" type="Node3D"]
-script = ExtResource("1_2x7f4")
-
-[node name="Marker3D" type="Marker3D" parent="."]

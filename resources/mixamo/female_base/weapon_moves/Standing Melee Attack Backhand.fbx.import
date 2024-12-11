@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://csq7l8x85tnb2"
-path="res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"
+uid="uid://bi2y5aaywau2t"
+path="res://.godot/imported/Standing Melee Attack Backhand.fbx-25ab38351d33d7d4e4c8b9d12f5b0d14.scn"
 
 [deps]
 
-source_file="res://resources/mixamo/female_base/X Bot.fbx"
-dest_files=["res://.godot/imported/X Bot.fbx-b9875a077a78d807942d191843ecd88d.scn"]
+source_file="res://resources/mixamo/female_base/weapon_moves/Standing Melee Attack Backhand.fbx"
+dest_files=["res://.godot/imported/Standing Melee Attack Backhand.fbx-25ab38351d33d7d4e4c8b9d12f5b0d14.scn"]
 
 [params]
 

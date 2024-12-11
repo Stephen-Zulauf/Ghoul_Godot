@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://caoorrhju1aye"]
+[gd_scene load_steps=75 format=4 uid="uid://caoorrhju1aye"]
 
 [ext_resource type="AnimationLibrary" uid="uid://f8xgixyrboo4" path="res://resources/mixamo/res_libs/female_locomotion_lib.res" id="1_k0usw"]
 [ext_resource type="Script" path="res://controllers/character/character_controller.gd" id="1_vuqo8"]
@@ -12,6 +12,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://brshhwi7bqsdj" path="res://resources/mixamo/res_libs/female_locomotion_libPT3.res" id="6_d72ko"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_eysu3"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_086hf"]
+[ext_resource type="Texture2D" uid="uid://dv0ysk3cebq16" path="res://resources/global/crosshairs/Outline/crosshair179.png" id="18_ia42x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjdge"]
 resource_name = "Beta_HighLimbsGeoSG3"
@@ -995,6 +996,8 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mlsoc"]
 radius = 0.25
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wpdnc"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msalt"]
 animation = &"female_locomotion_libPT2/crouch_forward"
 
@@ -1178,13 +1181,21 @@ states/run/position = Vector2(386, 193)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_xid0c")
 states/walk/position = Vector2(386, 86)
 transitions = ["walk", "jump", SubResource("AnimationNodeStateMachineTransition_ccydn"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_4ijk1"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_pifnn"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_ljodi"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_0nlb4"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_t5vro"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_gpjws"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_apj68"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_5lopc"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_bl2kl"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_tfja7"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_byodd"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ymbqi"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1bwx4"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_vbop6"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_uxchg"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_do7b1"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_grmr2"), "crouch", "idle", SubResource("AnimationNodeStateMachineTransition_4gu5a"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_oairn"), "run", "crouch", SubResource("AnimationNodeStateMachineTransition_8jccc"), "crouch", "run", SubResource("AnimationNodeStateMachineTransition_t6pch"), "walk", "crouch", SubResource("AnimationNodeStateMachineTransition_baupc"), "crouch", "walk", SubResource("AnimationNodeStateMachineTransition_n88cd"), "fall", "crouch", SubResource("AnimationNodeStateMachineTransition_05x0y"), "crouch", "fall", SubResource("AnimationNodeStateMachineTransition_s47h4"), "jump", "crouch", SubResource("AnimationNodeStateMachineTransition_o4kw6"), "crouch", "jump", SubResource("AnimationNodeStateMachineTransition_1iy7o")]
-graph_offset = Vector2(-106, 23.7828)
+graph_offset = Vector2(-120, 9.7828)
 
-[node name="CharacterController" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "ANIMTREE")]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5kgy2"]
+graph_offset = Vector2(-515.221, 45.9777)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_wpdnc")
+nodes/TimeScale/position = Vector2(240, 80)
+"nodes/movement anims/node" = SubResource("AnimationNodeStateMachine_obgnr")
+"nodes/movement anims/position" = Vector2(-40, 80)
+nodes/output/position = Vector2(440, 140)
+node_connections = [&"TimeScale", 0, &"movement anims", &"output", 0, &"TimeScale"]
+
+[node name="CharacterController" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
 script = ExtResource("1_vuqo8")
 MOUSE_SENSITIVITY = 1.0
 CAMERA_CONTROLLER = NodePath("X Bot/GeneralSkeleton/BoneAttachment3D/SpringArmPivot/SpringArm3D/Camera3D")
-ANIMTREE = NodePath("AnimationTree")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_mrxwl")]
 anchors_preset = 0
@@ -1718,13 +1729,14 @@ shape = SubResource("CapsuleShape3D_mlsoc")
 [node name="State_Interface" type="Node3D" parent="."]
 script = ExtResource("5_27sf3")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree2" type="AnimationTree" parent="."]
 root_node = NodePath("../X Bot")
-tree_root = SubResource("AnimationNodeStateMachine_obgnr")
+tree_root = SubResource("AnimationNodeBlendTree_5kgy2")
 anim_player = NodePath("../X Bot/AnimationPlayer")
-parameters/crouch/blend_position = Vector2(0, 0)
-parameters/run/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
+parameters/TimeScale/scale = 1.5
+"parameters/movement anims/crouch/blend_position" = Vector2(0, 0)
+"parameters/movement anims/run/blend_position" = Vector2(0, 0)
+"parameters/movement anims/walk/blend_position" = Vector2(0, 0)
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("4_6rx8y")
@@ -1858,8 +1870,172 @@ to = NodePath("../../grounded")
 event = &"land"
 delay_in_seconds = "0.0"
 
-[node name="placeholder" type="Node" parent="StateChart/Root"]
+[node name="item" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_1lthi")
+initial_state = NodePath("unequiped")
+
+[node name="1hand" type="Node" parent="StateChart/Root/item"]
 script = ExtResource("7_eysu3")
+
+[node name="2hand" type="Node" parent="StateChart/Root/item"]
+script = ExtResource("7_eysu3")
+
+[node name="unequiped" type="Node" parent="StateChart/Root/item"]
+script = ExtResource("7_eysu3")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Inventory" type="CanvasLayer" parent="UI"]
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Inventory"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Inventory/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 32.0
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
+
+[node name="Panel2" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 32.0
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel2"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
+
+[node name="Panel3" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 32.0
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel3"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
+
+[node name="Panel4" type="Panel" parent="UI/Inventory/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel4"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 32.0
+expand_mode = 5
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="UI/Inventory/PanelContainer/HBoxContainer/Panel4"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.972549, 0.980392, 0.815686, 0.196078)
+
+[node name="Intraction" type="CanvasLayer" parent="UI"]
+
+[node name="prompt" type="CenterContainer" parent="UI/Intraction"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = 13.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Intraction/prompt"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Intraction/prompt/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Intraction/prompt/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="recticle" type="CanvasLayer" parent="UI"]
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/recticle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="UI/recticle/BoxContainer"]
+modulate = Color(0.972549, 0.980392, 0.815686, 0.4)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("18_ia42x")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="state_physics_processing" from="StateChart/Root/Movement/grounded" to="State_Interface" method="_on_grounded_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/Movement/grounded/idle" to="State_Interface" method="_on_idle_state_entered"]

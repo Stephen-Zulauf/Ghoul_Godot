@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7vk5ml043cbc"]
+[gd_scene load_steps=9 format=3 uid="uid://b7vk5ml043cbc"]
 
 [ext_resource type="MeshLibrary" uid="uid://c726i5p1djspe" path="res://environment/blender/exported_glbs/walls_dungeon/walls.tres" id="1_emiev"]
-[ext_resource type="PackedScene" uid="uid://blxmylqs4lq03" path="res://controllers/inventory/interaction_component.tscn" id="3_fs5hp"]
-[ext_resource type="Resource" uid="uid://pnbl7tgywrev" path="res://resources/Items/misc/Chicken/chicken_resource.tres" id="4_0vqem"]
+[ext_resource type="PackedScene" uid="uid://cqgyrg7ectd7v" path="res://controllers/spawn/item_spawner.tscn" id="3_eav81"]
 [ext_resource type="PackedScene" uid="uid://caoorrhju1aye" path="res://controllers/character/female_test.tscn" id="4_hif5t"]
+[ext_resource type="Script" path="res://controllers/Item/item_resource.gd" id="4_qwfkk"]
+[ext_resource type="Resource" uid="uid://dfru05ujgmcji" path="res://Items/misc/chicken/chicken_resource.tres" id="5_7npbr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2y077"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,10 +31,6 @@ fog_density = 0.1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i6jx5")
 
-[node name="interaction_component" parent="." instance=ExtResource("3_fs5hp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86608, -1.78813e-07, 3.41596)
-resource = ExtResource("4_0vqem")
-
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh_library = ExtResource("1_emiev")
@@ -45,3 +42,7 @@ data = {
 
 [node name="CharacterController" parent="." instance=ExtResource("4_hif5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.272956, 1.78814e-07, 2.07738)
+
+[node name="ItemSpawner" parent="." instance=ExtResource("3_eav81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88199, 0, 3.5688)
+Items = Array[ExtResource("4_qwfkk")]([ExtResource("5_7npbr")])
